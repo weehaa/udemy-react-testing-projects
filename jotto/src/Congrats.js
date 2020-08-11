@@ -24,6 +24,10 @@ const Congrats = (props) => {
   );
 };
 
+Congrats.defaultProps = {
+  success: false
+}
+
 Congrats.propTypes = {
   success: PropTypes.bool.isRequired,
 };
