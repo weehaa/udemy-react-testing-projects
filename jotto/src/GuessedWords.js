@@ -1,19 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GuessedWords = (props) => {
-  const contents = (
-    <>
+const GuessedWords = ({ guessedWords }) => {
+  const renderInstructions = () => {
+    return (
       <span data-test="guess-instructions">
         Try to guess the secret word!
       </span>
-    </>
-  );
-  return (
-    <div data-test="component-guessed-words">
-      { !props.guessedWords.length ? contents : null }
-    </div>
+    )
+  };
 
+  const renderGuessedWordsTable = () => {
+    const guessedWordsRows = guessedWords.map((word) => (
+        <tr key={word.guessedWord} data-test="guessed-word">
+          <td>{word.guessedWord}</td>
+          <td>{word.letterMatchCount}</td>
+        </tr>
+      ));
+    return (
+      <div data-test="guessed-words">
+        <h3>Guessed Words</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>Guessed Word</th>
+            <th>Matching Letters Count</th>
+          </tr>
+          </thead>
+          <tbody>
+          {guessedWordsRows}
+          </tbody>
+
+        </table>
+      </div>
+    );
+  };
+
+  return (
+    <section data-test="component-guessed-words">
+      { guessedWords.length ? renderGuessedWordsTable() : renderInstructions() }
+    </section>
   );
 };
 
@@ -29,5 +55,10 @@ GuessedWords.propTypes = {
     }).isRequired,
   )
 };
+
+
+
+
+
 
 export default GuessedWords;
