@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Congrats from './Congrats';
-import GuessedWords from './GuessedWords';
+import Congrats from '../congrats';
+import GuessedWords from '../guessed-words';
+import WordInput from '../word-input';
+
 import './App.css';
-import WordInput from './WordInput';
 
 class App extends Component {
   render() {
