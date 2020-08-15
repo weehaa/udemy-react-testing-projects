@@ -1,13 +1,17 @@
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
+  GUESS_WORD: 'GUESS_WORD',
 };
 
 /**
- * @function correctGuess
- * @return {object} - Action object with type 'CORRECT_GUESS'
+ * Returns Redux Thunk function that dispatches GUESS_WORD action
+ *  and (CONDITIONALY) CORRECT_GUESS action
+ *  @function guessWord
+ * @param {string} guessWord = Guessed word.
+ * @return {function} - Redux Thunk function.
  */
-export function correctGuess() {
-  return {
-    type: actionTypes.CORRECT_GUESS
-  };
+export const guessWord = (guessWord) => {
+  return function (dispatch, getState) {
+
+  }
 };
