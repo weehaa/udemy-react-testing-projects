@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLetterMatchCount } from '../helpers';
+import {getLetterMatchCount} from '../helpers';
 
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
@@ -21,7 +21,7 @@ export const guessWord = (guessedWord) => {
 
     dispatch({
       type: actionTypes.GUESS_WORD,
-      payload: { guessedWord, lettersMatchCount }
+      payload: {guessedWord, lettersMatchCount}
     });
 
     if (guessedWord === secretWord) {
@@ -29,7 +29,7 @@ export const guessWord = (guessedWord) => {
         type: actionTypes.CORRECT_GUESS
       });
     }
-  }
+  };
 };
 
 export const getSecretWord = () => {
@@ -41,5 +41,5 @@ export const getSecretWord = () => {
           payload: response.data,
         });
       });
-  }
-}
+  };
+};
