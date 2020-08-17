@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { storeFactory } from '../../../test/testUtils';
 
-import App from './App';
+import App, { UnconnectedApp } from './App';
 
 /**
  * Factory function to create a ShallowWrapper for the App component.
@@ -15,36 +15,31 @@ const setup = (state={}) => {
   return shallow(<App store={store} />).dive().dive();
 };
 
-test('renders without error', () => {
-  const wrapper = setup();
+const initialState = {
+  success: true,
+  guessedWords: [{ guessedWord: 'train', letterMatchCount: 3 }],
+  secretWord: 'party'
+};
+
+test('has access to state and `getSecretWord` action creator', () => {
+  const wrapper = setup(initialState);
+  const appProps = wrapper.instance().props;
+  const { success, guessedWords, secretWord, getSecretWord } = appProps;
+  expect({ success, guessedWords, secretWord }).toEqual(initialState);
+  expect(getSecretWord).toBeInstanceOf(Function);
 });
 
-describe('redux properties', () => {
-  test('has access to `success` piece of state', () => {
-    const success = true;
-    const wrapper = setup({ success });
-    const successProp = wrapper.instance().props.success;
-    expect(successProp).toBe(success);
-  });
+test('`getSecretWord` runs on App mount', () => {
+  const getSecretWordMock = jest.fn();
+  const props = { ...initialState, getSecretWord: getSecretWordMock};
 
-  test('has access to `secretWord` piece of state', () => {
-    const secretWord = 'party';
-    const wrapper = setup({ secretWord });
-    const secretWordProp = wrapper.instance().props.secretWord;
-    console.log(wrapper.instance().props);
-    expect(secretWordProp).toBe(secretWord);
-  });
+  // set up component with getSecretWordMock as the getSecretWord prop
+  const wrapper = shallow(<UnconnectedApp {...props} />);
 
-  test('has access to guessedWords piece of state', () => {
-    const guessedWords = [{ guessedWord: 'train', lettersMatchCount: 3 }];
-    const wrapper = setup({ guessedWords });
-    const guessedWordsProp = wrapper.instance().props.guessedWords;
-    expect(guessedWordsProp).toBe(guessedWords);
-  });
+  //run lifecycle method
+  wrapper.instance().componentDidMount();
 
-  test('`getSecretWord` action creator is a functiom on the props', () => {
-    const wrapper = setup();
-    const getSecretWordProp = wrapper.instance().props.getSecretWord;
-    expect(getSecretWordProp).toBeInstanceOf(Function);
-  })
+  //check to see if mock ran
+  const getSecretWordCallCount = getSecretWordMock.mock.calls.length;
+  expect(getSecretWordCallCount).toBe(1);
 });

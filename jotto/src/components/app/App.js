@@ -3,12 +3,19 @@ import {connect} from 'react-redux';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import WordInput from '../word-input';
+import PropTypes from 'prop-types';
 
 import {getSecretWord} from '../../actions';
 
 import './App.css';
 
-class App extends Component {
+export class UnconnectedApp extends Component {
+
+  componentDidMount() {
+    // get the secret word
+    this.props.getSecretWord();
+  }
+
   render() {
     const {success, guessedWords, secretWord} = this.props;
     return (
@@ -26,4 +33,17 @@ const mapStateToProps = ({success, guessedWords, secretWord}) => {
   return {success, guessedWords, secretWord};
 };
 
-export default connect(mapStateToProps, {getSecretWord})(App);
+UnconnectedApp.propTypes = {
+  //from connect:
+  success: PropTypes.bool.isRequired,
+  secretWord: PropTypes.string,
+  guessedWords: PropTypes.arrayOf(
+    PropTypes.shape({
+      guessedWord: PropTypes.string.isRequired,
+      letterMatchCount: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  getSecretWord: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, {getSecretWord})(UnconnectedApp);
