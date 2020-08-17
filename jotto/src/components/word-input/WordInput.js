@@ -9,7 +9,7 @@ class WordInput extends Component {
   render() {
     return (
       <section data-test="component-word-input">
-        { this.props.success ? null : <WordInputForm />}
+        { this.props.success ? null : <WordInputForm onSubmit={guessWord} />}
       </section>
     )
   }
