@@ -8,8 +8,8 @@ class WordInput extends Component {
 
   render() {
     return (
-      <section data-test="component-word-input">
-        { this.props.success ? null : <WordInputForm onSubmit={guessWord} />}
+      <section data-test="component-word-input" className="text-center">
+        { this.props.success ? null : <WordInputForm onSubmit={this.props.guessWord} />}
       </section>
     )
   }

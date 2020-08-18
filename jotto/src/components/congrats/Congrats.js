@@ -7,20 +7,19 @@ import PropTypes from 'prop-types';
  * @param {object} props - React props
  * @returns {JSX.Element} - Rendered component or null (if 'success' prop is false)
  */
-
 const Congrats = (props) => {
   const renderMessage = () => {
     return (
-      <span data-test="congrats-message">
+      <span data-test="congrats-message" className="alert alert-success">
         Congratulations! You guessed the word!
       </span>
     )
   }
 
   return (
-    <div data-test="component-congrats" className="alert alert-success">
+    <section data-test="component-congrats">
       {props.success ? renderMessage() : null}
-    </div>
+    </section>
   );
 };
 

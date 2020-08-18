@@ -5,7 +5,7 @@ import GuessedWords from './GuessedWords';
 
 const defaultProps = {
   guessedWords: [
-    { guessedWord: 'train', letterMatchCount: 3 },
+    { guessedWord: 'train', lettersMatchCount: 3 },
   ]
 };
 
@@ -42,9 +42,9 @@ describe('if there are no words guessed', () => {
 describe('if there are words guessed', () => {
   let wrapper;
   const guessedWords = [
-    { guessedWord: 'train', letterMatchCount: 3},
-    { guessedWord: 'agile', letterMatchCount: 1},
-    { guessedWord: 'party', letterMatchCount: 5}
+    { guessedWord: 'train', lettersMatchCount: 3},
+    { guessedWord: 'agile', lettersMatchCount: 1},
+    { guessedWord: 'party', lettersMatchCount: 5}
   ];
   beforeEach(() => {
     wrapper = setup({ guessedWords });

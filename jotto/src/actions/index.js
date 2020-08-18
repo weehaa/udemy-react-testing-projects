@@ -11,11 +11,11 @@ export const actionTypes = {
  * Returns Redux Thunk function that dispatches GUESS_WORD action
  *  and (CONDITIONALY) CORRECT_GUESS action
  *  @function guessWord
- * @param {string} guessWord = Guessed word.
+ * @param {string} guessedWord = Guessed word.
  * @return {function} - Redux Thunk function.
  */
 export const guessWord = (guessedWord) => {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     const secretWord = getState().secretWord;
     const lettersMatchCount = getLetterMatchCount(guessedWord, secretWord);
 

@@ -34,7 +34,7 @@ describe('`onSubmit` function calls', () => {
     wrapper = shallow(<WordInputForm {...props} />);
 
     // add value to input box
-    wrapper.setState({ currentGuess: guessedWord });
+    wrapper.setState({ inputValue: guessedWord });
 
     //find the submit button and simulate a click
     const form = findByTestAttr(wrapper, 'component-word-input-form');
@@ -50,4 +50,10 @@ describe('`onSubmit` function calls', () => {
     const guessedWordArg = onSubmitMock.mock.calls[0][0];
     expect(guessedWordArg).toBe(guessedWord)
   });
+
+  test('input field gets clear on submit', () => {
+    const wordInput = findByTestAttr(wrapper, 'word-input-box');
+    const wordInputValue = wordInput.get(0).props.value;
+    expect(wordInputValue).toBe('');
+  })
 });

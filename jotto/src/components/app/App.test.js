@@ -17,7 +17,7 @@ const setup = (state={}) => {
 
 const initialState = {
   success: true,
-  guessedWords: [{ guessedWord: 'train', letterMatchCount: 3 }],
+  guessedWords: [{ guessedWord: 'train', lettersMatchCount: 3 }],
   secretWord: 'party'
 };
 

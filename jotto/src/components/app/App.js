@@ -19,12 +19,13 @@ export class UnconnectedApp extends Component {
   render() {
     const {success, guessedWords, secretWord} = this.props;
     return (
-      <div className="container">
+      <article className="container text-center mt-5" >
         <h1 className="text-center">Jotto</h1>
+        <div className="mb-2">The secret word is <strong>{secretWord}</strong></div>
         <WordInput/>
         <Congrats success={success}/>
         <GuessedWords guessedWords={guessedWords}/>
-      </div>
+      </article>
     );
   }
 }
@@ -40,7 +41,7 @@ UnconnectedApp.propTypes = {
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
       guessedWord: PropTypes.string.isRequired,
-      letterMatchCount: PropTypes.number.isRequired,
+      lettersMatchCount: PropTypes.number.isRequired,
     })
   ).isRequired,
   getSecretWord: PropTypes.func.isRequired,
