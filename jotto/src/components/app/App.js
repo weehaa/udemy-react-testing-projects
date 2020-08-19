@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
+import GameReset from '../game-reset';
 import WordInput from '../word-input';
 import PropTypes from 'prop-types';
 
@@ -24,6 +25,7 @@ export class UnconnectedApp extends Component {
         <div className="mb-2">The secret word is <strong>{secretWord}</strong></div>
         <WordInput/>
         <Congrats success={success}/>
+        <GameReset visible={success} resetApp={this.props.getSecretWord} />
         <GuessedWords guessedWords={guessedWords}/>
       </article>
     );

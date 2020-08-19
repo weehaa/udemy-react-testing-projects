@@ -11,8 +11,9 @@ const GuessedWords = ({guessedWords}) => {
   };
 
   const renderGuessedWordsTable = () => {
-    const guessedWordsRows = guessedWords.map((word) => (
+    const guessedWordsRows = guessedWords.map((word, index) => (
       <tr key={word.guessedWord} data-test="guessed-word">
+        <td>{index+1}</td>
         <td>{word.guessedWord}</td>
         <td>{word.lettersMatchCount}</td>
       </tr>
@@ -23,6 +24,7 @@ const GuessedWords = ({guessedWords}) => {
         <table className="table table-sm">
           <thead className="thead-light">
           <tr>
+            <th>#</th>
             <th>Guessed Word</th>
             <th>Matching Letters Count</th>
           </tr>
@@ -31,7 +33,9 @@ const GuessedWords = ({guessedWords}) => {
           {guessedWordsRows}
           </tbody>
         </table>
+        <div>Total guesses: {guessedWords.length}</div>
       </div>
+
     );
   };
 
@@ -49,6 +53,7 @@ GuessedWords.defaultProps = {
 GuessedWords.propTypes = {
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
+      number: PropTypes.number,
       guessedWord: PropTypes.string.isRequired,
       lettersMatchCount: PropTypes.number.isRequired,
     })

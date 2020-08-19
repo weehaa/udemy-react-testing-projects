@@ -5,6 +5,7 @@ export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
+  RESET_APP: 'RESET_APP',
 };
 
 /**
@@ -33,6 +34,7 @@ export const guessWord = (guessedWord) => {
 };
 
 export const getSecretWord = () => {
+  console.log('getSecretWord');
   return (dispatch) => {
     return axios.get('http://localhost:3030')
       .then(response => {
