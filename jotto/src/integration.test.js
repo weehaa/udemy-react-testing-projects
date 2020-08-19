@@ -3,10 +3,11 @@ import { guessWord } from './actions';
 
 describe('guessWord action dispatcher', () => {
   const secretWord = 'party';
+  const isGiveUp = false;
   const unsuccessfulGuess = 'train';
   describe('no guessed words', () => {
     let store;
-    const initialState = { secretWord };
+    const initialState = { secretWord, isGiveUp };
     beforeEach(() => {
       store = storeFactory(initialState);
     });
@@ -37,7 +38,7 @@ describe('guessWord action dispatcher', () => {
   });
   describe('some guessed words', () => {
     const guessedWords = [ { guessedWord: 'agile', lettersMatchCount: 1 }];
-    const initialState = { guessedWords, secretWord };
+    const initialState = { guessedWords, secretWord, isGiveUp };
     let store;
     beforeEach(() => {
       store = storeFactory(initialState);

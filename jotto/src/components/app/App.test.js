@@ -16,6 +16,7 @@ const setup = (state={}) => {
 };
 
 const initialState = {
+  isGiveUp: false,
   success: true,
   guessedWords: [{ guessedWord: 'train', lettersMatchCount: 3 }],
   secretWord: 'party'
@@ -24,8 +25,8 @@ const initialState = {
 test('has access to state and `getSecretWord` action creator', () => {
   const wrapper = setup(initialState);
   const appProps = wrapper.instance().props;
-  const { success, guessedWords, secretWord, getSecretWord } = appProps;
-  expect({ success, guessedWords, secretWord }).toEqual(initialState);
+  const { success, guessedWords, secretWord, getSecretWord, isGiveUp } = appProps;
+  expect({ isGiveUp, success, guessedWords, secretWord }).toEqual(initialState);
   expect(getSecretWord).toBeInstanceOf(Function);
 });
 

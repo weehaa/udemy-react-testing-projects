@@ -39,9 +39,15 @@ class WordInputForm extends Component {
             placeholder="enter a word to guess"/>
           <button
             data-test="submit-button"
-            className="btn btn-primary"
+            className="btn btn-primary mr-1"
             type="submit">
             Submit
+          </button>
+          <button
+            data-test="give-up-button"
+            className="btn btn-danger"
+            onClick={this.props.onGiveUp}>
+            Give Up
           </button>
         </div>
       </form>

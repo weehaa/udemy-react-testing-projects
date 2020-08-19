@@ -20,25 +20,26 @@ export class UnconnectedApp extends Component {
   render() {
     const {success, guessedWords, secretWord} = this.props;
     return (
-      <article className="container text-center mt-5" >
+      <article className="container text-center mt-5">
         <h1 className="text-center">Jotto</h1>
         <div className="mb-2">The secret word is <strong>{secretWord}</strong></div>
         <WordInput/>
         <Congrats success={success}/>
-        <GameReset visible={success} resetApp={this.props.getSecretWord} />
+        <GameReset visible={success} resetApp={this.props.getSecretWord}/>
         <GuessedWords guessedWords={guessedWords}/>
       </article>
     );
   }
 }
 
-const mapStateToProps = ({success, guessedWords, secretWord}) => {
-  return {success, guessedWords, secretWord};
+const mapStateToProps = ({success, guessedWords, secretWord, isGiveUp}) => {
+  return {success, guessedWords, secretWord, isGiveUp};
 };
 
 UnconnectedApp.propTypes = {
   //from connect:
   success: PropTypes.bool.isRequired,
+  isGiveUp: PropTypes.bool.isRequired,
   secretWord: PropTypes.string,
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({

@@ -11,3 +11,8 @@ test('returns state of true upon receiving an action `CORRECT_GUESS', () => {
   expect(newState).toBe(true);
 });
 
+test('returns state of false  upon receiving an action `SET_SECRET_WORD`', () => {
+  const newState = successReducer(undefined, { type: actionTypes.SET_SECRET_WORD });
+  expect(newState).toBe(false);
+});
+
