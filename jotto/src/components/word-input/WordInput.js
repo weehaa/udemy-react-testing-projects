@@ -14,18 +14,18 @@ class WordInput extends Component {
           // does not render word input if word was successfully guessed
           // or give up button was clicked
           success || isGiveUp ?
-          null :
-          <WordInputForm 
-            onSubmit={guessWord}
-            onGiveUp={setGiveUp}/>
+            null :
+            <WordInputForm
+              onSubmit={guessWord}
+              onGiveUp={setGiveUp}/>
         }
       </section>
     );
   }
 }
 
-const mapStateToProps = ({success}) => {
-  return {success};
+const mapStateToProps = ({success, isGiveUp}) => {
+  return {success, isGiveUp};
 };
 
 export default connect(mapStateToProps, {guessWord, setGiveUp})(WordInput);

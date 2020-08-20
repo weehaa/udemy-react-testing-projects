@@ -4,6 +4,7 @@ import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import GameReset from '../game-reset';
 import WordInput from '../word-input';
+import GiveUp from '../give-up';
 import PropTypes from 'prop-types';
 
 import {getSecretWord} from '../../actions';
@@ -18,15 +19,16 @@ export class UnconnectedApp extends Component {
   }
 
   render() {
-    const {success, guessedWords, secretWord} = this.props;
+    const {success, guessedWords, secretWord, isGiveUp} = this.props;
     return (
       <article className="container text-center mt-5">
         <h1 className="text-center">Jotto</h1>
         <div className="mb-2">The secret word is <strong>{secretWord}</strong></div>
         <WordInput/>
         <Congrats success={success}/>
-        <GameReset visible={success} resetApp={this.props.getSecretWord}/>
-        <GuessedWords guessedWords={guessedWords}/>
+        <GiveUp isGiveUp={isGiveUp} secretWord={secretWord}/>
+        <GameReset visible={success || isGiveUp} resetApp={this.props.getSecretWord}/>
+        {isGiveUp || <GuessedWords guessedWords={guessedWords}/>}
       </article>
     );
   }

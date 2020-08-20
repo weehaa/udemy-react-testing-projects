@@ -10,9 +10,9 @@ import WordInput from './WordInput';
  * @param {object} initialState - Component props specific to this setup.
  * @returns {ShallowWrapper}
  */
-const setup = (initialState={}, props) => {
+const setup = (initialState={}) => {
   const store = storeFactory(initialState);
-  return shallow(<WordInput store={store} {...props}/>).dive().dive();
+  return shallow(<WordInput store={store}/>).dive().dive();
 };
 
 describe('render', () => {
@@ -44,7 +44,7 @@ describe('render', () => {
   describe('give up is true', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = setup({},{ isGiveUp: true });
+      wrapper = setup({ isGiveUp: true });
     })
     test('does not render WordInputForm component', () => {
       expect(wrapper.children().length).toBe(0);
