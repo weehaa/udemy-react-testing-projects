@@ -4,7 +4,6 @@ import {checkProps, findByTestAttr} from '../../../test/test-utils';
 
 import WordInput from './';
 
-
 const defaultProps = {secretWord: 'party'};
 /**
  * Setup function for WordInput component.
@@ -22,4 +21,34 @@ test('WordInput component renders without an error', () => {
 
 test('does not throw an error with expected props', () => {
   checkProps(WordInput, defaultProps);
+});
+
+describe('state controlled input field', () => {
+  let wrapper;
+  const mockSetCurrentGuess  = jest.fn();
+  beforeEach(() => {
+    mockSetCurrentGuess.mockClear();
+    // replacing React useState with mock function
+    React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
+    wrapper = setup();
+  });
+
+  test('`setCurrentGuess` getting called with an empty string on submit', () => {
+    const inputForm = findByTestAttr(wrapper, 'word-input-form');
+    inputForm.simulate('submit', {
+      preventDefault() {
+      }
+    });
+    expect(mockSetCurrentGuess).toHaveBeenCalledWith('');
+  });
+
+  test('state updates with value of input box upon change', () => {
+    const inputBox = findByTestAttr(wrapper, 'word-input-box');
+
+    // create a mock event and apply it to the change event on the input box
+    const mockEvent = {target: {value: 'train'}};
+    inputBox.simulate('change', mockEvent);
+
+    expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
+  });
 });
