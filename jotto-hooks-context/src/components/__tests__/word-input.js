@@ -1,8 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {checkProps, findByTestAttr} from '../test-utils';
+import {checkProps, findByTestAttr} from '../../test-utils';
 
-import WordInput from '../../src/components/word-input';
+import WordInput from '../word-input';
 
 const defaultProps = {secretWord: 'party'};
 /**
