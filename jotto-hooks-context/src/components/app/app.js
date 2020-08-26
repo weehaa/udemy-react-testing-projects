@@ -2,6 +2,9 @@ import React from 'react';
 import './app.css';
 import hookActions from '../../actions/hookActions';
 
+import Spinner from '../spinner';
+import WordInput from '../word-input';
+
 /**
  * Reducer to update state depending on action received
  * Called automatically by dispatch
@@ -13,7 +16,7 @@ import hookActions from '../../actions/hookActions';
 function reducer(state, action) {
   switch (action.type) {
     case 'setSecretWord':
-      return {...state, secretWord: action.payload};
+      return { ...state, secretWord: action.payload };
     default:
       throw new Error(`invalid action type ${action.type}`);
   }
@@ -22,25 +25,26 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = React.useReducer(
     reducer,
-    {secretWord: ''}
+    { secretWord: null }
   );
 
   const setSecretWord = (secretWord) =>
-    dispatch({type: 'setSecretWord', payload: secretWord});
+    dispatch({ type: 'setSecretWord', payload: secretWord });
 
   React.useEffect(
     () => {
-      hookActions.getSecretWord(setSecretWord)
-        .then(() => {
-        });
+      hookActions.getSecretWord(setSecretWord);
     }, []
   );
 
+  if (!state.secretWord) return <Spinner/>;
+
   return (
-    <section className="App" data-test="component-app">
-      <header className="App-header">
+    <section className="container text-center" data-test="component-app">
+      <header className="app-header">
         <h1 className="display-2 text-center mt-4">Jotto</h1>
       </header>
+      <WordInput secretWord={state.secretWord}/>
     </section>
   );
 }

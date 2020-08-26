@@ -1,0 +1,72 @@
+@keyframes lds-cube {
+    0% {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes lds-cube {
+    0% {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+.lds-css {
+    margin: 15px auto;
+}
+.lds-cube {
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.lds-cube div {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 10px;
+    left: 10px;
+    background: #1d3f72;
+    -webkit-animation: lds-cube 0.7s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    animation: lds-cube 0.7s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    -webkit-animation-delay: -0.21s;
+    animation-delay: -0.21s;
+}
+.lds-cube div:nth-child(2) {
+    top: 10px;
+    left: 110px;
+    background: #5699d2;
+    -webkit-animation-delay: -0.14s;
+    animation-delay: -0.14s;
+}
+.lds-cube div:nth-child(3) {
+    top: 110px;
+    left: 110px;
+    background: #71c2cc;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.lds-cube div:nth-child(4) {
+    top: 110px;
+    left: 10px;
+    background: #d8ebf9;
+    -webkit-animation-delay: -0.07s;
+    animation-delay: -0.07s;
+}
+.lds-cube {
+    width: 50px !important;
+    height: 50px !important;
+    -webkit-transform: translate(-25px, -25px) scale(0.25) translate(25px, 25px);
+    transform: translate(-25px, -25px) scale(0.25) translate(25px, 25px);
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}

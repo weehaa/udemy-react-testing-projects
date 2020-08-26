@@ -18,25 +18,27 @@ const WordInput = ({secretWord}) => {
   };
 
   return (
-    <section data-test="component-word-input">
+    <section className="text-center" data-test="component-word-input">
       <form
         data-test="word-input-form"
         className="form-inline"
         onSubmit={onFormSubmit}>
-        <input
-          data-test="word-input-box"
-          className="mb-2 mx-sm-3"
-          type="text"
-          placeholder="enter guess word"
-          value={currentGuess}
-          onChange={onInputChange}
-        />
-        <button
-          data-test="submit-button"
-          className="btn btn-primary mb-2"
-          type="submit">
-          Submit
-        </button>
+        <div className="form-group mx-auto mb-2">
+          <input
+            data-test="word-input-box"
+            className="form-control mx-sm-3"
+            type="text"
+            placeholder="enter guess word"
+            value={currentGuess}
+            onChange={onInputChange}
+          />
+          <button
+            data-test="submit-button"
+            className="btn btn-primary"
+            type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </section>
   );
