@@ -1,5 +1,6 @@
-const languageStrings = {
+export const languageStrings = {
   en: {
+    symbol: 'English',
     congrats: 'Congratulations! You guessed the word!',
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
@@ -9,6 +10,7 @@ const languageStrings = {
     matchingLettersColumnHeader: 'Matching Letters',
   },
   ru: {
+    symbol: 'Русский',
     congrats: 'Поздравляем! Вы угадали слово!',
     submit: 'Отправить',
     guessPrompt: 'Попробуй угадать секретное слово!',
