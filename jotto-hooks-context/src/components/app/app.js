@@ -6,7 +6,7 @@ import languageContext from '../../contexts/language-context';
 
 import Spinner from '../spinner';
 import WordInput from '../word-input';
-import LanguagePicker from '../language-picker';
+import LanguagePicker from '../language-picker/language-picker';
 
 /**
  * Reducer to update state depending on action received

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAttr, checkProps } from '../../test-utils';
 
-import LanguagePicker from '../language-picker';
+import LanguagePicker from '../language-picker/language-picker';
 
 const mockSetLanguage = jest.fn();
 
@@ -26,6 +26,12 @@ test('renders non-zero language icons', () => {
   expect(languageIcons.length).toBeGreaterThan(0);
 });
 
-test('calla setLanguage prop upon click', () => {
+test('call setLanguage prop upon click', () => {
+  const wrapper = setup();
+  const languageIcons = findByTestAttr(wrapper, 'language-icon');
 
+  const firstIcon = languageIcons.first();
+  firstIcon.simulate('click');
+
+  expect(mockSetLanguage).toHaveBeenCalled();
 });

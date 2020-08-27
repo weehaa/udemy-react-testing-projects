@@ -1,13 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import { languageStrings } from '../helpers/strings';
+import { languageStrings } from '../../helpers/strings';
 
 const LanguagePicker = ({ setLanguage }) => {
   const languageIcons = Object.entries(languageStrings).map(([lang, {symbol}]) =>
     <span
       data-test="language-icon"
       key={lang}
+      onClick={() => setLanguage(lang)}
     >
       {symbol}
     </span>
