@@ -1,6 +1,4 @@
-import stringsModule from '../strings';
-
-const { getStringByLanguage } = stringsModule;
+import getStringByLanguage from '../strings';
 
 // fake strings object to test getStringByLanguage function
 const strings = {

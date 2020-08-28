@@ -1,16 +1,22 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {checkProps, findByTestAttr} from '../../test-utils';
+import { shallow, mount } from 'enzyme';
+import { checkProps, findByTestAttr } from '../../test-utils';
+import getStringByLanguage from '../../helpers/strings';
 
 import WordInput from '../word-input';
+import languageContext from '../../contexts/language-context';
 
-const defaultProps = {secretWord: 'party'};
+const defaultProps = { secretWord: 'party' };
 /**
  * Setup function for WordInput component.
  * @return {ShallowWrapper}
  */
-const setup = (props = {...defaultProps}) => {
-  return shallow(<WordInput {...props}/>);
+const setup = (secretWord = 'party', language = 'en') => {
+  return mount(
+    <languageContext.Provider value={language} >
+      <WordInput secretWord={secretWord} />
+    </languageContext.Provider>
+  );
 };
 
 test('WordInput component renders without an error', () => {
@@ -25,7 +31,7 @@ test('does not throw an error with expected props', () => {
 
 describe('state controlled input field', () => {
   let wrapper;
-  const mockSetCurrentGuess  = jest.fn();
+  const mockSetCurrentGuess = jest.fn();
   beforeEach(() => {
     mockSetCurrentGuess.mockClear();
     // replacing React useState with mock function
@@ -46,9 +52,20 @@ describe('state controlled input field', () => {
     const inputBox = findByTestAttr(wrapper, 'word-input-box');
 
     // create a mock event and apply it to the change event on the input box
-    const mockEvent = {target: {value: 'train'}};
+    const mockEvent = { target: { value: 'train' } };
     inputBox.simulate('change', mockEvent);
 
     expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
   });
 });
+
+describe('test language context', () => {
+  for (let lang of ['ru', 'en']) {
+    test(`renders submit button in language: '${lang}'`, () => {
+      const wrapper = setup('party', lang);
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      const expectedButtonText = getStringByLanguage(lang, 'submit');
+      expect(submitButton.text()).toBe(expectedButtonText);
+    });
+  }
+})

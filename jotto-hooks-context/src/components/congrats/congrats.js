@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import languageContext from '../../contexts/language-context';
-import strings from '../../helpers/strings';
+import getStringByLanguage from '../../helpers/strings';
 
 /**
  * Functional react component for congratulatory message.
@@ -16,7 +16,7 @@ const Congrats = (props) => {
     return (
       <div data-test="component-congrats" className="alert alert-success">
         <span data-test="congrats-message">
-          { strings.getStringByLanguage(language, 'congrats') }
+          { getStringByLanguage(language, 'congrats') }
         </span>
       </div>
     );
@@ -29,10 +29,6 @@ const Congrats = (props) => {
 
 Congrats.propTypes = {
   success: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = ({success}) => {
-  return {success};
 };
 
 export default Congrats;

@@ -12,14 +12,14 @@ const mockGetSecretWord = jest.fn();
  * @param secretWord {string}
  * @returns {ShallowWrapper}
  */
-const setup = (secretWord = 'party') => {
+const setup = (secretWord = 'party', language = 'en') => {
   // clear mock to avoid any effect of previous tests
   mockGetSecretWord.mockClear();
   hookActions.getSecretWord = mockGetSecretWord;
 
   const mockUseReducer = jest.fn()
     .mockReturnValue([
-      { secretWord },
+      { secretWord, language },
       jest.fn()
     ]);
   React.useReducer = mockUseReducer;

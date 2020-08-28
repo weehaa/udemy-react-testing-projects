@@ -30,7 +30,7 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = React.useReducer(
     reducer,
-    { secretWord: null }
+    { secretWord: null },
   );
 
   const setSecretWord = (secretWord) =>

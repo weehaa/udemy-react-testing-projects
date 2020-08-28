@@ -5,7 +5,7 @@ import { findByTestAttr, checkProps } from '../../test-utils';
 import languageContext from '../../contexts/language-context';
 import Congrats from '../congrats';
 
-import strings from '../../helpers/strings';
+import getStringByLanguage from '../../helpers/strings';
 
 const defaultProps = { success: false };
 
@@ -48,11 +48,11 @@ test('does not throw warning with expected props', () => {
 describe('LanguagePicker', () => {
   test('renders congrats message in english', () => {
     const wrapper = setup({ success: true });
-    expect(wrapper.text()).toBe(strings.getStringByLanguage('en', 'congrats'));
+    expect(wrapper.text()).toBe(getStringByLanguage('en', 'congrats'));
   });
 
   test('correctly renders congrats text in russian', () => {
     const wrapper = setup({ success: true, language: 'ru' });
-    expect(wrapper.text()).toBe(strings.getStringByLanguage('ru', 'congrats'));
+    expect(wrapper.text()).toBe(getStringByLanguage('ru', 'congrats'));
   });
 });

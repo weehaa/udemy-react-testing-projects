@@ -32,7 +32,4 @@ function getStringByLanguage(languageCode, stringKey, strings=languageStrings) {
   return strings[languageCode][stringKey];
 }
 
-// for future mocking in tests
-export default {
-  getStringByLanguage,
-}
+export default getStringByLanguage;
