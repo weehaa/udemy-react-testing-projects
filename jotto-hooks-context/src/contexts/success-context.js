@@ -28,3 +28,8 @@ export const SuccessProvider = (props) => {
 
   return <successContext.Provider value={value} {...props} />;
 };
+
+export default {
+  useSuccess,
+  SuccessProvider
+};

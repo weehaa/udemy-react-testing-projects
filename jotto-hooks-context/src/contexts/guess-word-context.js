@@ -30,3 +30,8 @@ export const GuessedWordsProvider = (props) => {
 
   return <guessedWordsContext.Provider value={value} {...props} />;
 };
+
+export default {
+  useGuessedWords,
+  GuessedWordsProvider
+};

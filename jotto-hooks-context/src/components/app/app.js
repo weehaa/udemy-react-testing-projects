@@ -1,12 +1,17 @@
 import React from 'react';
 import './app.css';
-import hookActions from '../../actions/hookActions';
-import languageContext from '../../contexts/language-context';
 
+import hookActions from '../../actions/hookActions';
+
+import languageContext from '../../contexts/language-context';
+import successContext from '../../contexts/success-context';
 
 import Spinner from '../spinner';
 import WordInput from '../word-input';
 import LanguagePicker from '../language-picker/language-picker';
+import Congrats from '../congrats';
+import GuessedWords from '../guessed-words';
+
 
 /**
  * Reducer to update state depending on action received
@@ -42,6 +47,7 @@ function App() {
 
   React.useEffect(
     () => {
+      setLanguage('en');
       hookActions.getSecretWord(setSecretWord);
     }, []
   );
@@ -54,8 +60,12 @@ function App() {
         <header className="app-header">
           <LanguagePicker setLanguage={setLanguage} />
           <h1 className="display-2 text-center mt-4">Jotto</h1>
-        </header>      
-        <WordInput secretWord={state.secretWord}/>
+        </header>
+        <successContext.SuccessProvider>
+          <Congrats />
+          <WordInput secretWord={state.secretWord}/>
+        </successContext.SuccessProvider>
+        {/*<GuessedWords guessedWords={[]} />*/}
       </languageContext.Provider>
     </section>
   );
