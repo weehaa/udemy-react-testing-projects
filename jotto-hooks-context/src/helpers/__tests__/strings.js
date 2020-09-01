@@ -35,12 +35,12 @@ describe('language string testing', () => {
   test('returns english submit string when the language does not exist', () => {
     const string = getStringByLanguage('notALanguage', 'submit', strings);
     expect(string).toBe('submit');
-    expect(mockWarn).toHaveBeenCalledWith('Could not get string [submit] for [notALanguage]');
+    expect(mockWarn).toHaveBeenCalledWith('Could not get string [submit] for language [notALanguage]');
   });
 
   test('returns english submit string when submit key does not exist for language', () => {
     const string = getStringByLanguage('fr', 'submit', strings);
     expect(string).toBe('submit');
-    expect(mockWarn).toHaveBeenCalledWith('Could not get string [submit] for [fr]');
+    expect(mockWarn).toHaveBeenCalledWith('Could not get string [submit] for language [fr]');
   });
 });
