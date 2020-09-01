@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import { findByTestAttr, checkProps } from '../../test-utils';
 import GuessedWords from '../guessed-words';
 
+import getStringByLanguage from '../../helpers/strings';
+
 const defaultProps = {
   guessedWords: [{ guessedWord: 'train', letterMatchCount: 3 }],
 };
@@ -36,6 +38,7 @@ describe('if there are no words guessed', () => {
     expect(instructions.text().length).not.toBe(0);
   });
 });
+
 describe('if there are words guessed', () => {
   let wrapper;
   const guessedWords = [
@@ -57,5 +60,23 @@ describe('if there are words guessed', () => {
   test('correct number of guessed words', () => {
     const guessedWordNodes = findByTestAttr(wrapper, 'guessed-word');
     expect(guessedWordNodes.length).toBe(guessedWords.length);
+  });
+});
+
+describe('correctly renders in different languages', () => {
+  test('renders instructions in english', () => {
+    const mockUseContext = jest.fn().mockReturnValue();
+    React.useContext = mockUseContext;
+    const wrapper = setup({ guessedWords: [] });
+    const guessInstructions = findByTestAttr(wrapper, 'guess-instructions');
+    expect(guessInstructions.text()).toBe(getStringByLanguage('en', 'guessPrompt'));
+  });
+
+  test('renders instructions in russian', () => {
+    const mockUseContext = jest.fn().mockReturnValue('ru');
+    React.useContext = mockUseContext;
+    const wrapper = setup({ guessedWords: [] });
+    const guessInstructions = findByTestAttr(wrapper, 'guess-instructions');
+    expect(guessInstructions.text()).toBe(getStringByLanguage('ru', 'guessPrompt'));
   });
 });
