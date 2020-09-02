@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import { GuessedWordsProvider, useGuessedWords } from '../../contexts/guess-word-context';
+import { GuessedWordsProvider, useGuessedWords } from '../guessed-words-context';
 
 // a functional component that calls useSuccess for our tests
 const FunctionalComponent = () => {
