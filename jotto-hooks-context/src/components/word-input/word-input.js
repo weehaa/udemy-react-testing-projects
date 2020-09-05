@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import getStringByLanguage from '../../helpers/strings';
 import languageContext from '../../contexts/language-context';
+import { useSuccess } from '../../contexts/success-context';
 
 const WordInput = ({ secretWord }) => {
 
   const [currentGuess, setCurrentGuess] = React.useState('');
   const language = React.useContext(languageContext);
+  const [success, setSuccess] = useSuccess();
 
   const onInputChange = (event) => {
     setCurrentGuess(event.target.value);
@@ -17,9 +19,13 @@ const WordInput = ({ secretWord }) => {
     event.preventDefault();
     // TODO: check currentGuess (length, if exists and display warnings)
     // TODO: update guessedWords context
-    // TODO: check secretWord and optionally update success context
+    if (currentGuess === secretWord) {
+      setSuccess(true);
+    }
     setCurrentGuess('');
   };
+
+  if (success) return null;
 
   return (
     <section className="text-center" data-test="component-word-input">

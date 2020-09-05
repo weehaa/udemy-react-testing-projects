@@ -5,16 +5,19 @@ import getStringByLanguage from '../../helpers/strings';
 
 import WordInput from '../word-input';
 import languageContext from '../../contexts/language-context';
+import { SuccessProvider } from '../../contexts/success-context';
 
 const defaultProps = { secretWord: 'party' };
 /**
  * Setup function for WordInput component.
  * @return {ShallowWrapper}
  */
-const setup = (secretWord = 'party', language = 'en') => {
+const setup = (secretWord = 'party', language = 'en', success = false) => {
   return mount(
-    <languageContext.Provider value={language} >
-      <WordInput secretWord={secretWord} />
+    <languageContext.Provider value={language}>
+      <SuccessProvider value={[success, jest.fn()]}>
+        <WordInput secretWord={secretWord} />
+      </SuccessProvider>
     </languageContext.Provider>
   );
 };
@@ -24,6 +27,11 @@ test('WordInput component renders without an error', () => {
   const wordInput = findByTestAttr(wrapper, 'component-word-input');
   expect(wordInput.length).toBe(1);
 });
+
+test('does not render WordInput component when success is truthy', () => {
+  const wrapper = setup('party','en',true);
+  expect(wrapper.isEmptyRender()).toBe(true);
+})
 
 test('does not throw an error with expected props', () => {
   checkProps(WordInput, defaultProps);
