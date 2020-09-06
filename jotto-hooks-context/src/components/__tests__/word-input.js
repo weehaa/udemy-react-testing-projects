@@ -6,6 +6,7 @@ import getStringByLanguage from '../../helpers/strings';
 import WordInput from '../word-input';
 import languageContext from '../../contexts/language-context';
 import { SuccessProvider } from '../../contexts/success-context';
+import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
 const defaultProps = { secretWord: 'party' };
 /**
@@ -16,7 +17,9 @@ const setup = (secretWord = 'party', language = 'en', success = false) => {
   return mount(
     <languageContext.Provider value={language}>
       <SuccessProvider value={[success, jest.fn()]}>
-        <WordInput secretWord={secretWord} />
+        <GuessedWordsProvider>
+          <WordInput secretWord={secretWord} />
+        </GuessedWordsProvider>
       </SuccessProvider>
     </languageContext.Provider>
   );
