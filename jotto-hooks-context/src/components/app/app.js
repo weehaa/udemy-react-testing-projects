@@ -62,6 +62,7 @@ function App() {
           <LanguagePicker setLanguage={setLanguage} />
           <h1 className="display-2 text-center mt-4">Jotto</h1>
         </header>
+        <p>the secret word is {state.secretWord}</p>
         <GuessedWordsProvider>
           <successContext.SuccessProvider>
             <Congrats />
