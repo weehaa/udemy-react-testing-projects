@@ -1,6 +1,7 @@
 export const languageStrings = {
   en: {
     symbol: 'English',
+    name: 'The Guess Race',
     congrats: 'Congratulations! You guessed the word!',
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
@@ -8,16 +9,19 @@ export const languageStrings = {
     guessColumnHeader: 'Guessed Words',
     guessedWords: 'Guesses',
     matchingLettersColumnHeader: 'Matching Letters',
+    inPlaceLettersColumnHeader: 'Letters in Place'
   },
   ru: {
     symbol: 'Русский',
+    name: 'Угадайская гонка',
     congrats: 'Поздравляем! Вы угадали слово!',
     submit: 'Отправить',
     guessPrompt: 'Попробуй угадать секретное слово!',
     guessInputPlaceholder: 'Введите слово',
     guessedWords: 'Таблица Ваших попыток',
     guessColumnHeader: 'Слово',
-    matchingLettersColumnHeader: 'Количество совпадений букв',
+    matchingLettersColumnHeader: 'Совпадения',
+    inPlaceLettersColumnHeader: 'На своем месте'
   }
 }
 
