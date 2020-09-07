@@ -4,9 +4,9 @@ const fs = require('fs');
 
 const app = express();
 
-// CORS for react app, assuming port 3000
+// CORS for react app, assuming ports 3000 - 3009
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: /localhost:300[0-9]/,
   credentials: true
 }))
 
