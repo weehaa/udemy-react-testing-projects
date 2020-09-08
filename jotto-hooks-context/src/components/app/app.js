@@ -12,6 +12,7 @@ import WordInput from '../word-input';
 import LanguagePicker from '../language-picker/language-picker';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
+import getStringByLanguage from '../../helpers/strings';
 
 
 /**
@@ -33,7 +34,7 @@ function reducer(state, action) {
   }
 }
 
-function App() {
+const App = () => {
   const [state, dispatch] = React.useReducer(
     reducer,
     { secretWord: null },
@@ -45,6 +46,8 @@ function App() {
   const setLanguage = (language) => {
     dispatch({ type: 'setLanguage', payload: language });
   }
+
+  const name = getStringByLanguage(state.language, 'name');
 
   React.useEffect(
     () => {
@@ -60,7 +63,7 @@ function App() {
       <languageContext.Provider value={state.language}>
         <header className="app-header">
           <LanguagePicker setLanguage={setLanguage} />
-          <h1 className="display-2 text-center mt-4">Jotto</h1>
+          <h1 className="display-4 text-center mt-4">{name}</h1>
         </header>
         <p>the secret word is {state.secretWord}</p>
         <GuessedWordsProvider>

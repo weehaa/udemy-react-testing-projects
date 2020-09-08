@@ -5,7 +5,7 @@ import getStringByLanguage from '../../helpers/strings';
 import languageContext from '../../contexts/language-context';
 import { useSuccess } from '../../contexts/success-context';
 import { useGuessedWords } from '../../contexts/guessed-words-context';
-import { getLetterMatchCount } from '../../helpers';
+import { getLetterMatchCount, getLettersInPlace } from '../../helpers';
 
 const WordInput = ({ secretWord }) => {
 
@@ -24,9 +24,10 @@ const WordInput = ({ secretWord }) => {
     if (currentGuess) {
       // update guessedWords context
       const lettersMatchCount = getLetterMatchCount(currentGuess, secretWord);
+      const { lettersInPlaceCount } = getLettersInPlace(currentGuess, secretWord);
       setGuessedWords(guessedWords => [
           ...guessedWords,
-          { guessedWord: currentGuess, lettersMatchCount }
+          { guessedWord: currentGuess, lettersMatchCount, lettersInPlaceCount }
         ]
       );
       // update success context

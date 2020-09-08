@@ -10,34 +10,36 @@ const GuessedWords = () => {
 
   const getString = (key) => {
     return getStringByLanguage(language, key);
-  }
+  };
 
   let contents;
   if (guessedWords.length === 0) {
     contents = (
       <span data-test="guess-instructions">
-        { getString('guessPrompt') }
+        {getString('guessPrompt')}
       </span>
     );
   } else {
     const guessedWordsRows = guessedWords.map((word, index) => (
-      <tr data-test="guessed-word" key={ index }>
-        <td>{ word.guessedWord }</td>
-        <td>{ word.lettersMatchCount }</td>
+      <tr data-test="guessed-word" key={index}>
+        <td>{word.guessedWord}</td>
+        <td>{word.lettersMatchCount}</td>
+        <td>{word.lettersInPlaceCount}</td>
       </tr>
     ));
     contents = (
       <div data-test="guessed-words">
-        <h3>{ getString('guessedWords') }</h3>
+        <h3>{getString('guessedWords')}</h3>
         <table className="table table-sm">
           <thead className="thead-light">
-            <tr>
-              <th>{getString('guessColumnHeader')}</th>
-              <th>{ getString('matchingLettersColumnHeader')}</th>
-            </tr>
+          <tr>
+            <th>{getString('guessColumnHeader')}</th>
+            <th>{getString('matchingLettersColumnHeader')}</th>
+            <th>{getString('inPlaceLettersColumnHeader')}</th>
+          </tr>
           </thead>
           <tbody>
-            { guessedWordsRows }
+          {guessedWordsRows}
           </tbody>
         </table>
       </div>
@@ -45,10 +47,9 @@ const GuessedWords = () => {
   }
   return (
     <div data-test="component-guessed-words">
-      { contents }
+      {contents}
     </div>
   );
 };
-
 
 export default GuessedWords;
