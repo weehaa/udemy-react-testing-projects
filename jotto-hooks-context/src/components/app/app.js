@@ -13,7 +13,7 @@ import LanguagePicker from '../language-picker/language-picker';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import getStringByLanguage from '../../helpers/strings';
-
+import SecretWord from '../secret-word';
 
 /**
  * Reducer to update state depending on action received
@@ -65,9 +65,10 @@ const App = () => {
           <LanguagePicker setLanguage={setLanguage} />
           <h1 className="display-4 text-center mt-4">{name}</h1>
         </header>
-        <p>the secret word is {state.secretWord}</p>
+        <p>The secret word is {state.secretWord}</p>
         <GuessedWordsProvider>
           <successContext.SuccessProvider>
+            <SecretWord secretWord={state.secretWord}/>
             <Congrats />
             <WordInput secretWord={state.secretWord}/>
           </successContext.SuccessProvider>

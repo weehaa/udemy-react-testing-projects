@@ -10,7 +10,7 @@ import getStringByLanguage from '../../helpers/strings';
 /**
 * Factory function to create a ShallowWrapper for the GuessedWords component.
 * @function setup
-* @param {object} props - Component props specific to this setup.
+* @param {array} guessedWords
 * @returns {ShallowWrapper}
 */
 const setup = (guessedWords = []) => {

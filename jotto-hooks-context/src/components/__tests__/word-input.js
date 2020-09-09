@@ -9,8 +9,12 @@ import { SuccessProvider } from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
 const defaultProps = { secretWord: 'party' };
+
 /**
  * Setup function for WordInput component.
+ * @param {string} secretWord
+ * @param {string} language
+ * @param {string} success
  * @return {ShallowWrapper}
  */
 const setup = (secretWord = 'party', language = 'en', success = false) => {
