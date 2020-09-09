@@ -12,7 +12,6 @@ import './secret-word.css';
  * @returns {React.Component}
  */
 const SecretWord = ({ secretWord }) => {
-  console.log(secretWord);
   // initially fill in the panes with spaces
   const initialLetters = Array(secretWord.length).fill(' ');
   const [letters, setLetters] = React.useState(initialLetters);

@@ -20,7 +20,11 @@ const GuessedWords = () => {
       </span>
     );
   } else {
-    const guessedWordsRows = guessedWords.map((word, index) => (
+    // reverse the guessedWord array to show the latest guess at the top
+    // Use the shallow copy to preserve mutating the original array
+    let guessedWordsReversed = guessedWords.slice();
+    guessedWordsReversed.reverse();
+    const guessedWordsRows = guessedWordsReversed.map((word, index) => (
       <tr data-test="guessed-word" key={index}>
         <td>{word.guessedWord}</td>
         <td>{word.lettersMatchCount}</td>

@@ -65,7 +65,7 @@ const App = () => {
           <LanguagePicker setLanguage={setLanguage} />
           <h1 className="display-4 text-center mt-4">{name}</h1>
         </header>
-        <p>The secret word is {state.secretWord}</p>
+        {/*<p>The secret word is {state.secretWord}</p>*/}
         <GuessedWordsProvider>
           <successContext.SuccessProvider>
             <SecretWord secretWord={state.secretWord}/>
