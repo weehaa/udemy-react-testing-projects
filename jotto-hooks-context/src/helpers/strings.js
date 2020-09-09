@@ -9,7 +9,11 @@ export const languageStrings = {
     guessColumnHeader: 'Guessed Words',
     guessedWords: 'Guesses',
     matchingLettersColumnHeader: 'Matching Letters',
-    inPlaceLettersColumnHeader: 'Letters in Place'
+    inPlaceLettersColumnHeader: 'Letters in Place',
+    levels: {
+      easy: 'Easy',
+      medium: 'Medium',
+      hard: 'Hard'},
   },
   ru: {
     symbol: 'Русский',
@@ -21,8 +25,13 @@ export const languageStrings = {
     guessedWords: 'Таблица Ваших попыток',
     guessColumnHeader: 'Слово',
     matchingLettersColumnHeader: 'Совпадения',
-    inPlaceLettersColumnHeader: 'На своем месте'
-  }
+    inPlaceLettersColumnHeader: 'На своем месте',
+    levels: {
+      easy: 'Легкий',
+      medium: 'Средний',
+      hard: 'Сложный',
+    },
+  },
 }
 
 function getStringByLanguage(languageCode, stringKey, strings=languageStrings) {

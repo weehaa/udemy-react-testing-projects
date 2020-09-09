@@ -12,7 +12,7 @@ const WordInput = ({ secretWord }) => {
   const [currentGuess, setCurrentGuess] = React.useState('');
   const language = React.useContext(languageContext);
   const [success, setSuccess] = useSuccess();
-  const [guessedWords, setGuessedWords] = useGuessedWords();
+  const [, setGuessedWords] = useGuessedWords();
 
   const onInputChange = (event) => {
     setCurrentGuess(event.target.value);

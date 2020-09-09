@@ -3,6 +3,11 @@ import propTypes from 'prop-types';
 
 import { languageStrings } from '../../helpers/strings';
 
+/**
+ * @function LanguagePicker component for the language selection
+ * @param setLanguage - setLanguage method from ancestors
+ * @returns {JSX.Element}
+ */
 const LanguagePicker = ({ setLanguage }) => {
   const languageIcons = Object.entries(languageStrings).map(([lang, {symbol}]) =>
     <span

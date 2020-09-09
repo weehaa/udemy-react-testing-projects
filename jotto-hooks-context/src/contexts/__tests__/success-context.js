@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import * as successContext from '../../contexts/success-context';
+import successContext from '../../contexts/success-context';
 
 // a functional component that calls useSuccess for our tests
 const FunctionalComponent = () => {

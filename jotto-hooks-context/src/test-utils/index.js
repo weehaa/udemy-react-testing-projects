@@ -12,7 +12,7 @@ export const findByTestAttr = (wrapper, val) => {
 
 /**
  * Throw error if conformingProps do not pass propTypes validation.
- * @param {React.component} component - Component to check props against.
+ * @param {function({setLevel: Function}): *} component - Component to check props against.
  * @param {object} conformingProps - Props we expect to conform to defined propTypes.
  */
 export const checkProps = (component, conformingProps) => {
