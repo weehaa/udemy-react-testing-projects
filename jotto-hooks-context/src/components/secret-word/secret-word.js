@@ -1,6 +1,9 @@
 import React from 'react';
+
 import levelContext from '../../contexts/level-context';
 import { useGuessedWords } from '../../contexts/guessed-words-context';
+import { useSuccess } from '../../contexts/success-context';
+
 import { getLettersInPlace } from '../../helpers';
 
 import './secret-word.css';
@@ -19,6 +22,13 @@ const SecretWord = ({ secretWord }) => {
 
   const [guessedWords] = useGuessedWords();
   const level = React.useContext(levelContext);
+  const [success, setSuccess] = useSuccess();
+
+  React.useEffect(() => {
+    if (letters.join('') === secretWord && !success) {
+      setSuccess(true);
+    }
+  }, [letters, secretWord, success, setSuccess])
 
   React.useEffect(() => {
     if (!guessedWords.length) return;
@@ -47,7 +57,6 @@ const SecretWord = ({ secretWord }) => {
       // do not show any letters on hard level
       default: return;
     }
-
   },[guessedWords, secretWord, level])
 
   const secretWordLetters = letters.map((letter, index) => (
