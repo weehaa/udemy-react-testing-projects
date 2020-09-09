@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import languageContext from '../../contexts/language-context';
 
-import getStringByLanguage, { languageStrings } from '../../helpers/strings';
+import getStringByLanguage from '../../helpers/strings';
 
 /**
  * @function LevelPicker component for the level selection

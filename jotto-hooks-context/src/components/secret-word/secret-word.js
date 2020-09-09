@@ -1,4 +1,5 @@
 import React from 'react';
+import levelContext from '../../contexts/level-context';
 import { useGuessedWords } from '../../contexts/guessed-words-context';
 import { getLettersInPlace } from '../../helpers';
 
@@ -17,20 +18,37 @@ const SecretWord = ({ secretWord }) => {
   const [letters, setLetters] = React.useState(initialLetters);
 
   const [guessedWords] = useGuessedWords();
+  const level = React.useContext(levelContext);
 
   React.useEffect(() => {
     if (!guessedWords.length) return;
     // update the shown letters state using the last guess
     const { guessedWord } = guessedWords[guessedWords.length-1];
-    const { lettersInPlaceCount, lettersIndices } = getLettersInPlace(guessedWord, secretWord);
-    if ( !lettersInPlaceCount ) return;
 
-    setLetters(letters =>
-        letters.map((letter, index) =>
-          lettersIndices.includes(index) ? secretWord[index] : letter
-        )
-    )
-  },[guessedWords, secretWord])
+    switch (level) {
+      case 'easy':
+        // show any matched letter
+        setLetters(letters =>
+          letters.map((letter, index) =>
+            guessedWord.split('').includes(secretWord[index]) ? secretWord[index] : letter
+          )
+        );
+        break;
+      case 'medium':
+        // show only matched letters in their own places
+        const { lettersInPlaceCount, lettersIndices } = getLettersInPlace(guessedWord, secretWord);
+        if (!lettersInPlaceCount) return;
+        setLetters(letters =>
+          letters.map((letter, index) =>
+            lettersIndices.includes(index) ? secretWord[index] : letter
+          )
+        );
+        break;
+      // do not show any letters on hard level
+      default: return;
+    }
+
+  },[guessedWords, secretWord, level])
 
   const secretWordLetters = letters.map((letter, index) => (
     <div

@@ -5,6 +5,7 @@ import hookActions from '../../actions/hookActions';
 import getStringByLanguage from '../../helpers/strings';
 
 import languageContext from '../../contexts/language-context';
+import levelContext from '../../contexts/level-context';
 import successContext from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
@@ -40,7 +41,7 @@ function reducer(state, action) {
 const App = () => {
   const [state, dispatch] = React.useReducer(
     reducer,
-    { secretWord: null },
+    { secretWord: null }
   );
 
   const setSecretWord = (secretWord) =>
@@ -80,7 +81,9 @@ const App = () => {
         {/*<p>The secret word is {state.secretWord}</p>*/}
         <GuessedWordsProvider>
           <successContext.SuccessProvider>
-            <SecretWord secretWord={state.secretWord}/>
+            <levelContext.Provider value={state.level}>
+              <SecretWord secretWord={state.secretWord}/>
+            </levelContext.Provider>
             <Congrats/>
             <WordInput secretWord={state.secretWord}/>
           </successContext.SuccessProvider>
