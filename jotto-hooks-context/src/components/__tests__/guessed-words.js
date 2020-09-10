@@ -60,7 +60,7 @@ describe('if there are words guessed', () => {
 
 describe('correctly renders in different languages', () => {
   test('renders instructions in english', () => {
-    const mockUseContext = jest.fn().mockReturnValue();
+    const mockUseContext = jest.fn().mockReturnValue('en');
     React.useContext = mockUseContext;
     const wrapper = setup([]);
     const guessInstructions = findByTestAttr(wrapper, 'guess-instructions');
