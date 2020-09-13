@@ -14,7 +14,9 @@ export const languageStrings = {
       easy: 'Easy',
       medium: 'Medium',
       hard: 'Hard'},
+    loginTitle: 'Login or create a new account with:',
   },
+
   ru: {
     symbol: 'Русский',
     name: 'Угадайская гонка',
@@ -31,6 +33,7 @@ export const languageStrings = {
       medium: 'Средний',
       hard: 'Сложный',
     },
+    loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
   },
 }
 

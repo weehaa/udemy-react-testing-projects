@@ -1,7 +1,7 @@
 import React from 'react';
 
-import languageContext from '../../contexts/language-context';
 import guessedWordsContext from '../../contexts/guessed-words-context';
+import languageContext from '../../contexts/language-context';
 import getStringByLanguage from '../../helpers/strings';
 
 const GuessedWords = () => {
