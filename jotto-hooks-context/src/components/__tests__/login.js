@@ -1,11 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { LanguageProvider } from '../../contexts/language-context';
+
+import { mount } from 'enzyme';
 
 import Login from '../login';
 import { findByTestAttr } from '../../test-utils';
 
 const setup = () => {
-  return shallow(<Login />);
+  return mount (
+    <LanguageProvider>
+      <Login />
+    </LanguageProvider>
+  );
 }
 
 test('component renders at least 3 login variants', () => {

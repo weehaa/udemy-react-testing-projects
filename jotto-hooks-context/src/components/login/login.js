@@ -1,15 +1,13 @@
 import React from 'react';
 import { IconEmail, IconFacebook, IconGoogle } from '../icons';
 
-import languageContext from '../../contexts/language-context';
-import getStringByLanguage from '../../helpers/strings';
+import { useLangStrings } from '../../contexts/language-context';
 
 import './login.css';
 
 const Login = () => {
 
-  const language = React.useContext(languageContext);
-  const loginTitle = getStringByLanguage(language, 'loginTitle');
+  const langStrings = useLangStrings();
 
   const loginVariants = [
     { name: 'Google', Icon: IconGoogle, clazz: '' },
@@ -32,7 +30,7 @@ const Login = () => {
     <section
       data-test="component-login"
       className="container text-center mt-5">
-      <h4 className="mb-3">{loginTitle}</h4>
+      <h4 className="mb-3">{langStrings.loginTitle}</h4>
       <div className="btn-group-vertical">
         {loginButtons}
       </div>
