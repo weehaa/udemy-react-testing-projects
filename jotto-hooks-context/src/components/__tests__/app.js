@@ -6,11 +6,14 @@ import Game from '../game';
 import Login from '../login';
 
 import App from '../app';
+import { LanguageProvider } from '../../contexts/language-context';
 
 const setup = (path) => {
   return mount(
     <MemoryRouter initialEntries={[ path ]}>
-      <App/>
+      <LanguageProvider>
+        <App/>
+      </LanguageProvider>
     </MemoryRouter>
   );
 }
@@ -29,7 +32,8 @@ describe('paths', () => {
 
   test('`/login` path should render Login component', () => {
     const wrapper = setup('/login');
-    expect(wrapper.find(Login)).toHaveLength(1);
+    const componentLogin  = findByTestAttr(wrapper, 'component-login');
+    expect(componentLogin.length).toBe(1);
   });
 
 })
