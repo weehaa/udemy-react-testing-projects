@@ -48,4 +48,22 @@ function getStringByLanguage(languageCode, stringKey, strings=languageStrings) {
   return strings[languageCode][stringKey];
 }
 
+export const getLanguageStrings = (languageCode, strings=languageStrings) => {
+  if (!strings[languageCode]) {
+    console.warn(`Could not get strings for language [${languageCode}]`);
+  }
+  return strings[languageCode];
+}
+
+export const getDefaultLanguage = () => {
+  const defaultLanguage = 'en';
+  const browserLanguage = window.navigator.language;
+  if (!browserLanguage) return defaultLanguage;
+
+  const browserLanguageCode = browserLanguage.substr(0, 2);
+  const languageCodes = Object.keys(languageStrings);
+  if (languageCodes.includes(browserLanguageCode)) return browserLanguageCode;
+  return defaultLanguage;
+}
+
 export default getStringByLanguage;

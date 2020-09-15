@@ -1,4 +1,4 @@
-import getStringByLanguage from '../strings';
+import getStringByLanguage, { getDefaultLanguage } from '../strings';
 
 // fake strings object to test getStringByLanguage function
 const strings = {
@@ -6,7 +6,6 @@ const strings = {
   ru: { submit: 'Отправить'},
   fr: {},
 }
-
 
 describe('language string testing', () => {
   const mockWarn = jest.fn();
