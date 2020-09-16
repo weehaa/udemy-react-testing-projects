@@ -7,7 +7,7 @@ const Home = () => {
   const langStrings = useLangStrings();
 
   return (
-    <section>
+    <section data-test="component-home" className="container text-center">
       <h2 className="display-4 text-center mt-4">
         {langStrings.name}
       </h2>

@@ -11,7 +11,6 @@ import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
 import Spinner from '../spinner';
 import WordInput from '../word-input';
-import LanguagePicker from '../language-picker/language-picker';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import SecretWord from '../secret-word';
@@ -69,7 +68,7 @@ const Game = () => {
     <section className="container text-center" data-test="component-game">
       <languageContext.Provider value={state.language}>
         <header className="app-header">
-          <LanguagePicker setLanguage={setLanguage}/>
+
           <LevelPicker setLevel={setLevel}/>
           <p>
             Selected Level: {getStringByLanguage(state.language, 'levels')[state.level]}

@@ -1,7 +1,8 @@
-export const languageStrings = {
+const languageStrings = {
   en: {
     symbol: 'English',
-    name: 'The Guess Race',
+    flag: 'uk',
+    name: 'Guess a word',
     congrats: 'Congratulations! You guessed the word!',
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
@@ -13,13 +14,15 @@ export const languageStrings = {
     levels: {
       easy: 'Easy',
       medium: 'Medium',
-      hard: 'Hard'},
+      hard: 'Hard'
+    },
     loginTitle: 'Login or create a new account with:',
   },
 
   ru: {
     symbol: 'Русский',
-    name: 'Угадайская гонка',
+    flag: 'ru',
+    name: 'Угадай слово',
     congrats: 'Поздравляем! Вы угадали слово!',
     submit: 'Отправить',
     guessPrompt: 'Попробуй угадать секретное слово!',
@@ -35,9 +38,9 @@ export const languageStrings = {
     },
     loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
   },
-}
+};
 
-function getStringByLanguage(languageCode, stringKey, strings=languageStrings) {
+function getStringByLanguage(languageCode, stringKey, strings = languageStrings) {
   if (!strings[languageCode] || !strings[languageCode][stringKey]) {
     console.warn(`Could not get string [${stringKey}] for language [${languageCode}]`);
 
@@ -48,12 +51,12 @@ function getStringByLanguage(languageCode, stringKey, strings=languageStrings) {
   return strings[languageCode][stringKey];
 }
 
-export const getLanguageStrings = (languageCode, strings=languageStrings) => {
+export const getLanguageStrings = (languageCode, strings = languageStrings) => {
   if (!strings[languageCode]) {
     console.warn(`Could not get strings for language [${languageCode}]`);
   }
   return strings[languageCode];
-}
+};
 
 export const getDefaultLanguage = () => {
   const defaultLanguage = 'en';
@@ -64,6 +67,10 @@ export const getDefaultLanguage = () => {
   const languageCodes = Object.keys(languageStrings);
   if (languageCodes.includes(browserLanguageCode)) return browserLanguageCode;
   return defaultLanguage;
+};
+
+export const getLanguages = () => {
+  return Object.keys(languageStrings)
 }
 
 export default getStringByLanguage;

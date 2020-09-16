@@ -54,3 +54,4 @@ export const IconEmail = ({ clazz = '' }) => {
     </svg>
   );
 };
+
