@@ -37,7 +37,7 @@ const DropdownSelect = ({ items, selectedItemIdx, onSelect }) => {
   const { id: selectedId, name: selectedName, image: selectedImage } = items[selectedItemIdx];
   const dropdownItems = items.map(({ id, name, image }) =>
     <Dropdown.Item
-      data-test={`language-${id}`}
+      data-test={`item-${id}`}
       key={id}
       eventKey={id}
       active={id === selectedId}

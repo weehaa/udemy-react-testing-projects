@@ -5,7 +5,6 @@ import SecretWord from '../secret-word';
 
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 import { SuccessProvider } from '../../contexts/success-context';
-import levelContext from '../../contexts/level-context';
 
 import { findByTestAttr } from '../../test-utils';
 
@@ -24,11 +23,9 @@ const setup = (
   setSuccess = jest.fn()) => {
   return mount(
     <SuccessProvider value={[false, setSuccess]}>
-      <levelContext.Provider value={level}>
         <GuessedWordsProvider value={[guessedWords, jest.fn()]}>
-          <SecretWord secretWord={secretWord}/>
+          <SecretWord level={level} secretWord={secretWord}/>
         </GuessedWordsProvider>
-      </levelContext.Provider>
     </SuccessProvider>
   );
 };

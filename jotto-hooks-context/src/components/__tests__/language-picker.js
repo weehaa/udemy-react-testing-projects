@@ -23,15 +23,15 @@ test('renders without error', () => {
 
 test('renders language items', () => {
   const wrapper = setup();
-  const langItemRu = findByTestAttr(wrapper, 'language-ru');
+  const langItemRu = findByTestAttr(wrapper, 'item-ru');
   expect(langItemRu.exists()).toBe(true);
-  const langItemEn = findByTestAttr(wrapper, 'language-en');
+  const langItemEn = findByTestAttr(wrapper, 'item-en');
   expect(langItemEn.exists()).toBe(true);
 });
 
 test('call setLanguage upon click on `ru` item', () => {
   const wrapper = setup();
-  const langRuItem = findByTestAttr(wrapper, 'language-ru');
+  const langRuItem = findByTestAttr(wrapper, 'item-ru');
   langRuItem.first().simulate('click');
   expect(mockSetLanguage).toHaveBeenCalled();
   expect(mockSetLanguage).toHaveBeenCalledWith('ru');

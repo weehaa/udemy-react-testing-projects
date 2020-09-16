@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Game from '../game';
 import Login from '../login';
 import Home from '../home';
 
 const App = () => {
+  const [level, setLevel] = useState('medium');
   return (
     <main>
         <Switch>
           <Route
             path="/"
-            component={Home}
+            render={() => <Home level={level} setLevel={setLevel} />}
             exact />
           <Route
             path="/game"
-            component={Game}
+            render={() => <Game level={level} />}
             exact />
           <Route
             path="/login"

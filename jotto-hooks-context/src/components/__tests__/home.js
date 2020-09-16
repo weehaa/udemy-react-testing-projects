@@ -4,10 +4,10 @@ import Home from '../home';
 import { findByTestAttr } from '../../test-utils';
 import { LanguageProvider } from '../../contexts/language-context';
 
-const setup = () => {
+const setup = (level='medium', setLevel=jest.fn()) => {
   return mount(
     <LanguageProvider>
-      <Home/>
+      <Home level={level} setLevel={setLevel}/>
     </LanguageProvider>
   );
 };

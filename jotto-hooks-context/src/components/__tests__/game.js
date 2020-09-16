@@ -25,7 +25,7 @@ const setup = (secretWord = 'party', language = 'en') => {
   React.useReducer = mockUseReducer;
   // enzyme does not run useEffect on shallow
   // https://github.com/enzymejs/enzyme/issues/2086
-  return mount(<Game/>);
+  return mount(<Game level='medium' />);
 };
 
 test('Game renders without error', () => {

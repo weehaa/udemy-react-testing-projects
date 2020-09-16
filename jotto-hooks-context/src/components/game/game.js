@@ -5,7 +5,6 @@ import hookActions from '../../actions/hookActions';
 import getStringByLanguage from '../../helpers/strings';
 
 import languageContext from '../../contexts/language-context';
-import levelContext from '../../contexts/level-context';
 import successContext from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
@@ -14,7 +13,6 @@ import WordInput from '../word-input';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import SecretWord from '../secret-word';
-import LevelPicker from '../level-picker';
 
 /**
  * Reducer to update state depending on action received
@@ -30,14 +28,12 @@ function reducer(state, action) {
       return { ...state, secretWord: action.payload };
     case 'setLanguage':
       return { ...state, language: action.payload };
-    case 'setLevel':
-      return { ...state, level: action.payload };
     default:
       throw new Error(`invalid action type ${action.type}`);
   }
 }
 
-const Game = () => {
+const Game = ({level}) => {
   const [state, dispatch] = React.useReducer(
     reducer,
     { secretWord: null }
@@ -50,14 +46,10 @@ const Game = () => {
     dispatch({ type: 'setLanguage', payload: language });
   };
 
-  const setLevel = (level) => {
-    dispatch({ type: 'setLevel', payload: level });
-  };
 
   React.useEffect(
     () => {
       setLanguage('en');
-      setLevel('medium');
       hookActions.getSecretWord(setSecretWord);
     }, []
   );
@@ -68,11 +60,6 @@ const Game = () => {
     <section className="container text-center" data-test="component-game">
       <languageContext.Provider value={state.language}>
         <header className="app-header">
-
-          <LevelPicker setLevel={setLevel}/>
-          <p>
-            Selected Level: {getStringByLanguage(state.language, 'levels')[state.level]}
-          </p>
           <h1 className="display-4 text-center mt-4">
             {getStringByLanguage(state.language, 'name')}
           </h1>
@@ -80,9 +67,7 @@ const Game = () => {
         {/*<p>The secret word is {state.secretWord}</p>*/}
         <GuessedWordsProvider>
           <successContext.SuccessProvider>
-            <levelContext.Provider value={state.level}>
-              <SecretWord secretWord={state.secretWord}/>
-            </levelContext.Provider>
+            <SecretWord level={level} secretWord={state.secretWord}/>
             <Congrats/>
             <WordInput secretWord={state.secretWord}/>
           </successContext.SuccessProvider>

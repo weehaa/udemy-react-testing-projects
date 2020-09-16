@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import levelContext from '../../contexts/level-context';
 import { useGuessedWords } from '../../contexts/guessed-words-context';
 import { useSuccess } from '../../contexts/success-context';
 
@@ -12,16 +12,16 @@ import './secret-word.css';
  * The component shows "grey" panes of secretWord letters
  * the pane will show the letter if the guessedWord letter matches and sitting in the same place
  *
+ * @param {string} level
  * @param {string} secretWord
  * @returns {React.Component}
  */
-const SecretWord = ({ secretWord }) => {
+const SecretWord = ({ level, secretWord }) => {
   // initially fill in the panes with spaces
   const initialLetters = Array(secretWord.length).fill(' ');
   const [letters, setLetters] = React.useState(initialLetters);
 
   const [guessedWords] = useGuessedWords();
-  const level = React.useContext(levelContext);
   const [success, setSuccess] = useSuccess();
 
   React.useEffect(() => {
@@ -75,6 +75,11 @@ const SecretWord = ({ secretWord }) => {
       {secretWordLetters}
     </section>
   )
+}
+
+SecretWord.propTypes = {
+  level: PropTypes.string.isRequired,
+  secretWord: PropTypes.string.isRequired
 }
 
 export default SecretWord;

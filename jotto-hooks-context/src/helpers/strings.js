@@ -12,9 +12,9 @@ const languageStrings = {
     matchingLettersColumnHeader: 'Matching Letters',
     inPlaceLettersColumnHeader: 'Letters in Place',
     levels: {
-      easy: 'Easy',
-      medium: 'Medium',
-      hard: 'Hard'
+      easy: {name: 'Easy', icon: '?'},
+      medium: {name: 'Medium', icon: '??'},
+      hard: {name: 'Hard', icon: '???'},
     },
     loginTitle: 'Login or create a new account with:',
   },
@@ -32,9 +32,9 @@ const languageStrings = {
     matchingLettersColumnHeader: 'Совпадения',
     inPlaceLettersColumnHeader: 'На своем месте',
     levels: {
-      easy: 'Легкий',
-      medium: 'Средний',
-      hard: 'Сложный',
+      easy: {name: 'Легкий', icon: '?'},
+      medium: {name: 'Средний', icon: '??'},
+      hard: {name: 'Сложный', icon: '???'},
     },
     loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
   },
