@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { checkProps, findByTestAttr } from '../../test-utils';
 import getStringByLanguage from '../../helpers/strings';
 
 import WordInput from '../word-input';
-import languageContext from '../../contexts/language-context';
+import  { LanguageProvider } from '../../contexts/language-context';
 import { SuccessProvider } from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
@@ -19,13 +19,13 @@ const defaultProps = { secretWord: 'party' };
  */
 const setup = (secretWord = 'party', language = 'en', success = false) => {
   return mount(
-    <languageContext.Provider value={language}>
+    <LanguageProvider value={[language, jest.fn()]}>
       <SuccessProvider value={[success, jest.fn()]}>
         <GuessedWordsProvider>
           <WordInput secretWord={secretWord} />
         </GuessedWordsProvider>
       </SuccessProvider>
-    </languageContext.Provider>
+    </LanguageProvider>
   );
 };
 

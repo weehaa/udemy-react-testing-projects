@@ -1,22 +1,28 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps } from '../../test-utils';
+import { mount } from 'enzyme';
+import { findByTestAttr } from '../../test-utils';
 import GuessedWords from '../guessed-words';
 
 import guessedWordsContext from '../../contexts/guessed-words-context';
 
 import getStringByLanguage from '../../helpers/strings';
+import { LanguageProvider } from '../../contexts/language-context';
 
 /**
-* Factory function to create a ShallowWrapper for the GuessedWords component.
-* @function setup
-* @param {array} guessedWords
-* @returns {ShallowWrapper}
-*/
-const setup = (guessedWords = []) => {
+ * Factory function to create a ShallowWrapper for the GuessedWords component.
+ * @function setup
+ * @param {array} guessedWords
+ * @param {string} language
+ * @returns {ShallowWrapper}
+ */
+const setup = (guessedWords = [], language='en') => {
   const mockUseGuessedWords = jest.fn().mockReturnValue([guessedWords, jest.fn()]);
   guessedWordsContext.useGuessedWords = mockUseGuessedWords;
-  return shallow(<GuessedWords />)
+  return mount(
+    <LanguageProvider value={[language, jest.fn()]}>
+      <GuessedWords />
+    </LanguageProvider>
+  )
 };
 
 describe('if there are no words guessed', () => {
@@ -60,17 +66,13 @@ describe('if there are words guessed', () => {
 
 describe('correctly renders in different languages', () => {
   test('renders instructions in english', () => {
-    const mockUseContext = jest.fn().mockReturnValue('en');
-    React.useContext = mockUseContext;
     const wrapper = setup([]);
     const guessInstructions = findByTestAttr(wrapper, 'guess-instructions');
     expect(guessInstructions.text()).toBe(getStringByLanguage('en', 'guessPrompt'));
   });
 
   test('renders instructions in russian', () => {
-    const mockUseContext = jest.fn().mockReturnValue('ru');
-    React.useContext = mockUseContext;
-    const wrapper = setup([]);
+    const wrapper = setup([], 'ru');
     const guessInstructions = findByTestAttr(wrapper, 'guess-instructions');
     expect(guessInstructions.text()).toBe(getStringByLanguage('ru', 'guessPrompt'));
   });

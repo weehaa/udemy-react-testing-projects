@@ -1,22 +1,17 @@
 import React from 'react';
 
 import guessedWordsContext from '../../contexts/guessed-words-context';
-import languageContext from '../../contexts/language-context';
-import getStringByLanguage from '../../helpers/strings';
+import  { useLangStrings } from '../../contexts/language-context';
 
 const GuessedWords = () => {
-  const language = React.useContext(languageContext);
+  const langStrings = useLangStrings();
   const [guessedWords] = guessedWordsContext.useGuessedWords();
-
-  const getString = (key) => {
-    return getStringByLanguage(language, key);
-  };
 
   let contents;
   if (guessedWords.length === 0) {
     contents = (
       <span data-test="guess-instructions">
-        {getString('guessPrompt')}
+        {langStrings.guessPrompt}
       </span>
     );
   } else {
@@ -33,13 +28,13 @@ const GuessedWords = () => {
     ));
     contents = (
       <div data-test="guessed-words">
-        <h3>{getString('guessedWords')}</h3>
+        <h3>{langStrings.guessedWords}</h3>
         <table className="table table-sm">
           <thead className="thead-light">
           <tr>
-            <th>{getString('guessColumnHeader')}</th>
-            <th>{getString('matchingLettersColumnHeader')}</th>
-            <th>{getString('inPlaceLettersColumnHeader')}</th>
+            <th>{langStrings.guessColumnHeader}</th>
+            <th>{langStrings.matchingLettersColumnHeader}</th>
+            <th>{langStrings.inPlaceLettersColumnHeader}</th>
           </tr>
           </thead>
           <tbody>

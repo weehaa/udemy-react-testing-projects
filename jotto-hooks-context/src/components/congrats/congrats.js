@@ -1,7 +1,6 @@
 import React from 'react';
 
-import languageContext from '../../contexts/language-context';
-import getStringByLanguage from '../../helpers/strings';
+import { useLangStrings } from '../../contexts/language-context';
 import { useSuccess } from '../../contexts/success-context';
 
 /**
@@ -11,12 +10,12 @@ import { useSuccess } from '../../contexts/success-context';
  */
 const Congrats = () => {
   const [success] = useSuccess();
-  const language = React.useContext(languageContext);
+  const langStrings = useLangStrings();
   if (success) {
     return (
       <div data-test="component-congrats" className="alert alert-success">
         <span data-test="congrats-message">
-          { getStringByLanguage(language, 'congrats') }
+          { langStrings.congrats }
         </span>
       </div>
     );

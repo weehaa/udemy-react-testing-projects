@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import getStringByLanguage from '../../helpers/strings';
-import languageContext from '../../contexts/language-context';
+import { useLangStrings } from '../../contexts/language-context';
 import { useSuccess } from '../../contexts/success-context';
 import { useGuessedWords } from '../../contexts/guessed-words-context';
 import { getLetterMatchCount, getLettersInPlace } from '../../helpers';
@@ -10,7 +8,7 @@ import { getLetterMatchCount, getLettersInPlace } from '../../helpers';
 const WordInput = ({ secretWord }) => {
 
   const [currentGuess, setCurrentGuess] = React.useState('');
-  const language = React.useContext(languageContext);
+  const langStrings = useLangStrings();
   const [success, setSuccess] = useSuccess();
   const [, setGuessedWords] = useGuessedWords();
 
@@ -51,7 +49,7 @@ const WordInput = ({ secretWord }) => {
             data-test="word-input-box"
             className="form-control mx-sm-3"
             type="text"
-            placeholder={getStringByLanguage(language, 'guessInputPlaceholder')}
+            placeholder={langStrings.guessInputPlaceholder}
             value={currentGuess}
             onChange={onInputChange}
           />
@@ -59,7 +57,7 @@ const WordInput = ({ secretWord }) => {
             data-test="submit-button"
             className="btn btn-primary"
             type="submit">
-            {getStringByLanguage(language, 'submit')}
+            {langStrings.submit}
           </button>
         </div>
       </form>

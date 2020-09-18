@@ -7,6 +7,7 @@ import { GuessedWordsProvider } from '../contexts/guessed-words-context';
 
 import WordInput from '../components/word-input';
 import GuessedWords from '../components/guessed-words';
+import { LanguageProvider } from '../contexts/language-context';
 
 /**
  * Setup function for testing guess attempts on WordInput and GuessedWords components behaviour
@@ -16,12 +17,14 @@ import GuessedWords from '../components/guessed-words';
  */
 const setup = (guessExamples = [], secretWord = 'party') => {
   const wrapper = mount(
-    <GuessedWordsProvider>
-      <SuccessProvider>
-        <WordInput secretWord={secretWord}/>
-        <GuessedWords/>
-      </SuccessProvider>
-    </GuessedWordsProvider>
+    <LanguageProvider>
+      <GuessedWordsProvider>
+        <SuccessProvider>
+          <WordInput secretWord={secretWord}/>
+          <GuessedWords/>
+        </SuccessProvider>
+      </GuessedWordsProvider>
+    </LanguageProvider>
   );
 
   const inputBox = findByTestAttr(wrapper, 'word-input-box');

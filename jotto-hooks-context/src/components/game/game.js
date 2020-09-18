@@ -2,9 +2,8 @@ import React from 'react';
 import './game.css';
 
 import hookActions from '../../actions/hookActions';
-import getStringByLanguage from '../../helpers/strings';
 
-import languageContext from '../../contexts/language-context';
+import { useLangStrings } from '../../contexts/language-context';
 import successContext from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
@@ -26,8 +25,6 @@ function reducer(state, action) {
   switch (action.type) {
     case 'setSecretWord':
       return { ...state, secretWord: action.payload };
-    case 'setLanguage':
-      return { ...state, language: action.payload };
     default:
       throw new Error(`invalid action type ${action.type}`);
   }
@@ -38,18 +35,13 @@ const Game = ({level}) => {
     reducer,
     { secretWord: null }
   );
+  const langStrings = useLangStrings();
 
   const setSecretWord = (secretWord) =>
     dispatch({ type: 'setSecretWord', payload: secretWord });
 
-  const setLanguage = (language) => {
-    dispatch({ type: 'setLanguage', payload: language });
-  };
-
-
   React.useEffect(
     () => {
-      setLanguage('en');
       hookActions.getSecretWord(setSecretWord);
     }, []
   );
@@ -58,10 +50,9 @@ const Game = ({level}) => {
 
   return (
     <section className="container text-center" data-test="component-game">
-      <languageContext.Provider value={state.language}>
         <header className="app-header">
           <h1 className="display-4 text-center mt-4">
-            {getStringByLanguage(state.language, 'name')}
+            {langStrings.name}
           </h1>
         </header>
         {/*<p>The secret word is {state.secretWord}</p>*/}
@@ -73,7 +64,6 @@ const Game = ({level}) => {
           </successContext.SuccessProvider>
           <GuessedWords/>
         </GuessedWordsProvider>
-      </languageContext.Provider>
     </section>
   );
 };

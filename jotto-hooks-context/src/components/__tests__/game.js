@@ -4,6 +4,7 @@ import { findByTestAttr } from '../../test-utils';
 import Game from '../game';
 
 import hookActions from '../../actions/hookActions';
+import { LanguageProvider } from '../../contexts/language-context';
 
 const mockGetSecretWord = jest.fn();
 
@@ -12,20 +13,24 @@ const mockGetSecretWord = jest.fn();
  * @param secretWord {string}
  * @returns {ShallowWrapper}
  */
-const setup = (secretWord = 'party', language = 'en') => {
+const setup = (secretWord = 'party') => {
   // clear mock to avoid any effect of previous tests
   mockGetSecretWord.mockClear();
   hookActions.getSecretWord = mockGetSecretWord;
 
-  const mockUseReducer = jest.fn()
+  React.useReducer = jest.fn()
     .mockReturnValue([
-      { secretWord, language },
+      { secretWord },
       jest.fn()
     ]);
-  React.useReducer = mockUseReducer;
+
   // enzyme does not run useEffect on shallow
   // https://github.com/enzymejs/enzyme/issues/2086
-  return mount(<Game level='medium' />);
+  return mount(
+    <LanguageProvider>
+      <Game level='medium' />
+    </LanguageProvider>
+  );
 };
 
 test('Game renders without error', () => {

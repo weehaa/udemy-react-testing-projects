@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { findByTestAttr } from '../../test-utils';
-import languageContext from '../../contexts/language-context';
+import { LanguageProvider } from '../../contexts/language-context';
 import Congrats from '../congrats';
 
 import getStringByLanguage from '../../helpers/strings';
@@ -18,11 +18,11 @@ const setup = ({success, language }) => {
   success = success || false;
   language = language || 'en';
   return mount(
-    <languageContext.Provider value={language} >
+    <LanguageProvider value={[language]} >
       <SuccessProvider value={[success, jest.fn()]}>
         <Congrats />
       </SuccessProvider>
-    </languageContext.Provider>
+    </LanguageProvider>
     );
 }
 
