@@ -5,7 +5,7 @@ import Login from '../login';
 import Home from '../home';
 
 const App = () => {
-  const [level, setLevel] = useState('medium');
+  const [level, setLevel] = useState('easy');
   return (
     <main>
         <Switch>

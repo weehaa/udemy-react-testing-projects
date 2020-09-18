@@ -25,12 +25,14 @@ const LanguagePicker = () => {
   });
 
   return (
-    <DropdownSelect
-      data-test="component-language-picker"
-      items={languageItems}
-      onSelect={setLanguage}
-      selectedItemIdx={currentLangIdx}
-    />
+    <section className="mb-2" data-test="component-language-picker">
+      <DropdownSelect
+        className="d-inline-flex justify-content-between"
+        items={languageItems}
+        onSelect={setLanguage}
+        selectedItemIdx={currentLangIdx}
+      />
+    </section>
   );
 };
 

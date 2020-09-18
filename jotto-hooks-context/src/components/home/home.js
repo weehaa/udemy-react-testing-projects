@@ -3,6 +3,9 @@ import { useLangStrings } from '../../contexts/language-context';
 
 import LanguagePicker from '../language-picker';
 import LevelPicker from '../level-picker';
+import SubmitSettings from '../submit-settings';
+
+import './home.scss';
 
 const Home = ({level, setLevel}) => {
   const langStrings = useLangStrings();
@@ -13,6 +16,7 @@ const Home = ({level, setLevel}) => {
       </h2>
       <LanguagePicker />
       <LevelPicker level={level} setLevel={setLevel} />
+      <SubmitSettings />
     </section>
   )
 }

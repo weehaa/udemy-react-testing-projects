@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import './dropdown-select.css';
 
 /**
  * @param {string} image
@@ -14,11 +15,10 @@ const ItemView = ({ image, name }) => {
       {
         image ?
           <img
-            alt={`${name} icon`}
+            alt={`${name}`}
             src={image}
             width="32px"
             height="32px"
-            className="mb-1 mr-2"
           /> :
           null
       }
@@ -28,10 +28,17 @@ const ItemView = ({ image, name }) => {
 };
 
 /**
- * @param {Array} items - array of [{string} itemId, {JSX.element} item]
- * @param {number} selectedItemIdx
- * @param {function} onSelect
- * @returns {JSX.Element} dropdown element with icons
+ * @typedef item
+ * @type {object}
+ * @property {string} id - an item ID.
+ * @property {string} name - item name that displays in dropdown.
+ * @property {string|object} image - image src.
+ *
+ * @param {Array<item>} items - array of item objects
+ * @callback {function} onSelect - fires on item selection with selected id
+ * @param {number} selectedItemIdx - index in items Array that corresponds the default item
+ *
+ * @returns {JSX.Element} Dropdown
  */
 const DropdownSelect = ({ items, selectedItemIdx, onSelect }) => {
   const { id: selectedId, name: selectedName, image: selectedImage } = items[selectedItemIdx];

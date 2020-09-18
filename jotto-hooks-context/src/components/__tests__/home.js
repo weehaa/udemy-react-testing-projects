@@ -3,12 +3,15 @@ import { mount } from 'enzyme';
 import Home from '../home';
 import { findByTestAttr } from '../../test-utils';
 import { LanguageProvider } from '../../contexts/language-context';
+import { MemoryRouter } from 'react-router-dom';
 
-const setup = (level='medium', setLevel=jest.fn()) => {
+const setup = (level='medium', setLevel=jest.fn(), path='/') => {
   return mount(
-    <LanguageProvider>
-      <Home level={level} setLevel={setLevel}/>
-    </LanguageProvider>
+    <MemoryRouter initialEntries={[ path ]}>
+      <LanguageProvider>
+        <Home level={level} setLevel={setLevel}/>
+      </LanguageProvider>
+    </MemoryRouter>
   );
 };
 

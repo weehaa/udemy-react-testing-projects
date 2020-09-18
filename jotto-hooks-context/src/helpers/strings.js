@@ -12,11 +12,12 @@ const languageStrings = {
     matchingLettersColumnHeader: 'Matching Letters',
     inPlaceLettersColumnHeader: 'Letters in Place',
     levels: {
-      easy: {name: 'Easy', icon: '?'},
-      medium: {name: 'Medium', icon: '??'},
-      hard: {name: 'Hard', icon: '???'},
+      easy: {name: 'Easy', icon: 'easy.svg'},
+      medium: {name: 'Medium', icon: 'medium.svg'},
+      hard: {name: 'Hard', icon: 'hard.svg'},
     },
     loginTitle: 'Login or create a new account with:',
+    submitButton: 'PLAY',
   },
 
   ru: {
@@ -32,11 +33,12 @@ const languageStrings = {
     matchingLettersColumnHeader: 'Совпадения',
     inPlaceLettersColumnHeader: 'На своем месте',
     levels: {
-      easy: {name: 'Легкий', icon: '?'},
-      medium: {name: 'Средний', icon: '??'},
-      hard: {name: 'Сложный', icon: '???'},
+      easy: {name: 'Легкий', icon: 'easy.svg'},
+      medium: {name: 'Средний', icon: 'medium.svg'},
+      hard: {name: 'Сложный', icon: 'hard.svg'},
     },
     loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
+    submitButton: 'ИГРАТЬ',
   },
 };
 
