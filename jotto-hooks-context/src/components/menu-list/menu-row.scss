@@ -1,0 +1,82 @@
+$color: #003366;
+$btn-background: #6699CC;
+$btn-width: 180px;
+
+.menu-list {
+  margin: 0 auto;
+}
+
+.menu-row {
+  border: 10px solid transparent;
+}
+.menu-label, .menu-hint {
+  width: 30%;
+}
+
+.menu-label {
+  padding: 0 10px 0 0;
+  text-align: right;
+}
+
+.menu-hint {
+  padding: 0 0 0 10px;
+  text-align: left;
+}
+
+.menu-item:first-child{
+  width: 200px;
+}
+
+.menu-label, .menu-hint {
+  vertical-align: middle;
+}
+
+.tooltip-button {
+  padding: 3px 12px;
+  background-color: #FFFFFF;
+  border: 2px solid $color;
+  font-weight: bold;
+  color: $color;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.menu-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: $color;
+}
+
+.level-info {
+  padding: 0 5px;
+  width: 220px;
+  list-style: none;
+}
+
+
+.dropdown-toggle.btn {
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+  width: 100%;
+  color: black;
+  background: $btn-background;
+}
+
+.dropdown-toggle::after {
+  align-self: center;
+}
+
+.dropdown-item {
+  padding: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  max-width: $btn-width;
+}
+
+.dropdown-item>img {
+  display: inline-block;
+  margin-right: 1em;
+}

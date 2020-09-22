@@ -22,7 +22,7 @@ const ItemView = ({ image, name }) => {
           /> :
           null
       }
-      <span>{name}</span>
+      <span className="dropdown-text">{name}</span>
     </>
   );
 };

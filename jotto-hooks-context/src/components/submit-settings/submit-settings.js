@@ -7,7 +7,7 @@ import { useLangStrings } from '../../contexts/language-context';
 import './submit-settings.scss';
 
 const SubmitSettings = ({ history }) => {
-  const buttonName = useLangStrings()['submitButton'];
+  const buttonName = useLangStrings().menuStrings.submitButton;
   return (
     <section data-test='component-submit-settings'>
       <Button

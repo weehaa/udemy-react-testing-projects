@@ -7,17 +7,37 @@ const languageStrings = {
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
     guessInputPlaceholder: 'enter guess',
-    guessColumnHeader: 'Guessed Words',
+    guessColumnHeader: 'Guess',
     guessedWords: 'Guesses',
-    matchingLettersColumnHeader: 'Matching Letters',
-    inPlaceLettersColumnHeader: 'Letters in Place',
+    matchingLettersColumnHeader: 'Matched',
+    inPlaceLettersColumnHeader: 'In Place',
     levels: {
       easy: {name: 'Easy', icon: 'easy.svg'},
       medium: {name: 'Medium', icon: 'medium.svg'},
       hard: {name: 'Hard', icon: 'hard.svg'},
     },
     loginTitle: 'Login or create a new account with:',
-    submitButton: 'PLAY',
+    menuStrings: {
+      submitButton: 'PLAY',
+      languageInfo: {
+        title: 'Game Language',
+        content: `Here you can change the language of the game. 
+      Surprise, yep? :-)`
+      },
+      levelInfo: {
+        title: 'Level Info',
+        content: `
+        <ul class="level-info">
+            <li><strong>Easy:</strong> Open All matched letters</li>
+            <li><strong>Medium:</strong> Open matched letters in the same place</li>
+            <li><strong>Hard:</strong> Open No letters</li>
+        </ul>`
+      },
+      labels: {
+        language: 'Language',
+        level: 'Level',
+      },
+    },
   },
 
   ru: {
@@ -28,17 +48,38 @@ const languageStrings = {
     submit: 'Отправить',
     guessPrompt: 'Попробуй угадать секретное слово!',
     guessInputPlaceholder: 'Введите слово',
-    guessedWords: 'Таблица Ваших попыток',
+    guessedWords: 'Попытки',
     guessColumnHeader: 'Слово',
     matchingLettersColumnHeader: 'Совпадения',
-    inPlaceLettersColumnHeader: 'На своем месте',
+    inPlaceLettersColumnHeader: 'На месте',
     levels: {
       easy: {name: 'Легкий', icon: 'easy.svg'},
       medium: {name: 'Средний', icon: 'medium.svg'},
       hard: {name: 'Сложный', icon: 'hard.svg'},
     },
     loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
-    submitButton: 'ИГРАТЬ',
+    menuStrings: {
+      submitButton: 'ИГРАТЬ',
+      languageInfo: {
+        title: 'Язык игры',
+        content: `Здесь Вы можете выбрать язык игры. 
+        Неожиданно, да? :-)`
+      },
+      levelInfo: {
+        title: 'Описание уровней',
+        content: `
+          <ul class="level-info">
+              <li><strong>Легкий:</strong> Открываются все совпавшие буквы</li>
+              <li><strong>Средний:</strong> Открываются совпавшие буквы, оказавшиеся на своем месте</li>
+              <li><strong>Сложный:</strong> Буквы не открываются</li>
+          </ul>`
+      },
+      labels: {
+        language: 'Язык',
+        level: 'Уровень',
+      },
+    },
+
   },
 };
 

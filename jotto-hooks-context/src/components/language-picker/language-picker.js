@@ -25,7 +25,7 @@ const LanguagePicker = () => {
   });
 
   return (
-    <section className="mb-2" data-test="component-language-picker">
+    <section data-test="component-language-picker">
       <DropdownSelect
         className="d-inline-flex justify-content-between"
         items={languageItems}

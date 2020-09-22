@@ -18,7 +18,8 @@ const { fiveLetterWords } = words;
 app.get('/', (req, res) => {
   // select a random word
   const word = fiveLetterWords[Math.floor(Math.random() * fiveLetterWords.length)]
-
+  console.log('new secret word is ', word) 
+	
   // return it as the response
   res.send(word)
 })

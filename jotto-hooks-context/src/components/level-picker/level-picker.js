@@ -27,7 +27,7 @@ const LevelPicker = ({ level, setLevel }) => {
   );
 
   return (
-    <section className="mb-2" data-test="component-level-picker">
+    <section data-test="component-level-picker">
       <DropdownSelect
         items={levelItems}
         selectedItemIdx={defaultLevelIdx}
