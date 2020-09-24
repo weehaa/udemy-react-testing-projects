@@ -1,10 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import { findByTestAttr } from '../../test-utils';
-import Game from '../game';
-import Login from '../login';
 
+import { findByTestAttr } from '../../test-utils';
+
+import Game from '../game';
 import App from '../app';
 import { LanguageProvider } from '../../contexts/language-context';
 
@@ -22,7 +22,7 @@ describe('paths', () => {
   test('invalid path should redirect to 404', () => {
     const wrapper = setup('/random')
     expect(wrapper.find(Game)).toHaveLength(0);
-    expect(wrapper.text()).toBe('Page not found');
+    expect(wrapper.text()).toMatch(/Page not found/);
   });
 
   test('`/game` path should render Game component', () => {

@@ -72,6 +72,7 @@ const MenuList = ({ menuRowComponents }) => {
 
   return (
     <table
+      data-test="component-menu-list"
       className="menu-list"
     >
       <tbody>

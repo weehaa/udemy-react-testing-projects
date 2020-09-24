@@ -38,6 +38,10 @@ const languageStrings = {
         level: 'Level',
       },
     },
+    navStrings: {
+      home: 'home',
+      login: 'login'
+    },
   },
 
   ru: {
@@ -79,7 +83,10 @@ const languageStrings = {
         level: 'Уровень',
       },
     },
-
+    navStrings: {
+      home: 'Меню',
+      login: 'Вход'
+    },
   },
 };
 

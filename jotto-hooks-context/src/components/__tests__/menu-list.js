@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MenuListTemp from '../menu-list';
+import MenuList from '../menu-list';
+import { findByTestAttr } from '../../test-utils';
 
 const menuRowComponents = [
   {
@@ -16,11 +17,12 @@ const menuRowComponents = [
 
 const setup = (menuRowComponents =[]) => {
   return shallow(
-      <MenuListTemp menuRowComponents={menuRowComponents} />
+      <MenuList menuRowComponents={menuRowComponents} />
   )
 }
 
 test('renders 2 rows with provided setup data', () => {
   const wrapper = setup(menuRowComponents);
-  expect(wrapper.children().length).toBe(2);
+  const menuRows = findByTestAttr(wrapper, 'component-menu-row');
+  expect(menuRows.length).toBe(2);
 })
