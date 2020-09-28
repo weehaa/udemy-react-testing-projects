@@ -13,13 +13,17 @@ const testRow = {
 
 
 /**
- *
+ * setup function to create a MenuRow wrapper
  * @returns {ShallowWrapper}
  */
 const setup = ({ label, menuItem: item, hint }) => {
   return mount(
     <LanguageProvider>
-      <MenuRow label={label} menuItem={item} hint={hint}/>
+      <table>
+        <tbody>
+          <MenuRow label={label} menuItem={item} hint={hint}/>
+        </tbody>
+      </table>
     </LanguageProvider>
   );
 };
@@ -33,21 +37,18 @@ describe('rendering', () => {
 
   test('renders label', () => {
     const wrapper = setup(testRow);
-
     const label = findByTestAttr(wrapper, 'menu-label');
     expect(label.exists()).toBe(true);
   });
 
   test('renders menu item', () => {
     const wrapper = setup(testRow);
-
     const item = findByTestAttr(wrapper, 'menu-item');
     expect(item.exists()).toBe(true);
   });
 
   test('renders menu hint', () => {
     const wrapper = setup(testRow);
-
     const hint = findByTestAttr(wrapper, 'menu-hint');
     expect(hint.exists()).toBe(true);
   });

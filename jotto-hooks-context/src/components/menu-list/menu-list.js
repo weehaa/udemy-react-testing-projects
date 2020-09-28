@@ -80,6 +80,7 @@ const MenuList = ({ menuRowComponents }) => {
         menuRowComponents.map(({ label, menuItem, hint }) =>
           <MenuRow
             key={label}
+            data-test="menu-list-row"
             label={label}
             menuItem={menuItem}
             hint={hint}/>)

@@ -6,11 +6,11 @@ import { findByTestAttr } from '../../test-utils';
 const menuRowComponents = [
   {
     label: 'language',
-    menuItem: <></>,
+    menuItem: <div>test</div>,
     hint: 'languageInfo' },
   {
     label: 'level',
-    menuItem: <></>,
+    menuItem: <div>test</div>,
     hint: 'levelInfo'
   }
 ];
@@ -23,6 +23,7 @@ const setup = (menuRowComponents =[]) => {
 
 test('renders 2 rows with provided setup data', () => {
   const wrapper = setup(menuRowComponents);
-  const menuRows = findByTestAttr(wrapper, 'component-menu-row');
+  console.log(wrapper.debug());
+  const menuRows = findByTestAttr(wrapper, 'menu-list-row');
   expect(menuRows.length).toBe(2);
 })
