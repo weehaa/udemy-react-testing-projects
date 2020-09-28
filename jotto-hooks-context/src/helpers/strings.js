@@ -6,7 +6,7 @@ const languageStrings = {
     congrats: 'Congratulations! You guessed the word!',
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
-    guessInputPlaceholder: 'enter guess',
+    guessInputPlaceholder: 'Enter a word of #number# letters',
     guessColumnHeader: 'Guess',
     guessedWords: 'Guesses',
     matchingLettersColumnHeader: 'Matched',
@@ -42,6 +42,7 @@ const languageStrings = {
       home: 'home',
       login: 'login'
     },
+    invalidLength: 'Your guess word length must be #number# letters!',
   },
 
   ru: {
@@ -51,7 +52,7 @@ const languageStrings = {
     congrats: 'Поздравляем! Вы угадали слово!',
     submit: 'Отправить',
     guessPrompt: 'Попробуй угадать секретное слово!',
-    guessInputPlaceholder: 'Введите слово',
+    guessInputPlaceholder: 'Введите слово из #number# букв',
     guessedWords: 'Попытки',
     guessColumnHeader: 'Слово',
     matchingLettersColumnHeader: 'Совпадения',
@@ -87,6 +88,7 @@ const languageStrings = {
       home: 'Меню',
       login: 'Вход'
     },
+    invalidLength: 'В слове должно быть #number# букв!',
   },
 };
 
