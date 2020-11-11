@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
+
 import Game from '../game';
 import Login from '../login';
 import Home from '../home';
@@ -7,26 +8,27 @@ import NavbarMenu from '../navbar-menu';
 
 const App = () => {
   const [level, setLevel] = useState('easy');
+  const [dictionary, setDictionary] = useState('adult');
   return (
     <main className="container text-center">
-      <NavbarMenu />
+      <NavbarMenu/>
       <Switch>
         <Route
           path="/"
-          render={() => <Home level={level} setLevel={setLevel} />}
-          exact />
+          render={() => <Home level={level} setLevel={setLevel} dictionary={dictionary} setDictionary={setDictionary}/>}
+          exact/>
         <Route
           path="/game"
-          render={() => <Game level={level} />}
-          exact />
+          render={() => <Game level={level}/>}
+          exact/>
         <Route
           path="/login"
           component={Login}
-          exact />
+          exact/>
         <Route render={() => <h3>Page not found</h3>}/>
       </Switch>
     </main>
-  )
-}
+  );
+};
 
 export default App;

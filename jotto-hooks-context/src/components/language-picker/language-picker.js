@@ -10,7 +10,6 @@ import { getLanguages, getLanguageStrings } from '../../helpers/strings';
  * @returns {JSX.Element}
  */
 const LanguagePicker = () => {
-
   const [language, setLanguage] = useContext(languageContext);
   const languages = getLanguages();
   const currentLangIdx = languages.indexOf(language);

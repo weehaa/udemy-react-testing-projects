@@ -16,6 +16,11 @@ const languageStrings = {
       medium: {name: 'Medium', icon: 'medium.svg'},
       hard: {name: 'Hard', icon: 'hard.svg'},
     },
+    dictionaries: {
+      kid: 'Kid',
+      adult: 'Adult',
+      professor: 'Professor',
+    },
     loginTitle: 'Login or create a new account with:',
     menuStrings: {
       submitButton: 'PLAY',
@@ -33,9 +38,20 @@ const languageStrings = {
             <li><strong>Hard:</strong> Open No letters</li>
         </ul>`
       },
+
+      dictionaryInfo: {
+        title: 'Dictionary Info',
+        content: `
+        <ul class="level-info">
+            <li><strong>Kid:</strong> Average dictionary of kid 4-7 years old </li>
+            <li><strong>Adult:</strong> Average dictionary of adult person </li>
+            <li><strong>Professor:</strong> Rarely used words</li>
+        </ul>`
+      },
       labels: {
         language: 'Language',
         level: 'Level',
+        dictionary: 'Dictionary'
       },
     },
     navStrings: {
@@ -83,9 +99,24 @@ const languageStrings = {
               <li><strong>Сложный:</strong> Буквы не открываются</li>
           </ul>`
       },
+      dictionaries: {
+        kid: 'Ребенок',
+        adult: 'Взрослый',
+        professor: 'Профессор',
+      },
+      dictionaryInfo: {
+        title: 'Описание наборов слов',
+        content: `
+          <ul class="level-info">
+              <li><strong>Ребенок:</strong> Простые слова, используемые детьми до 10 лет</li>
+              <li><strong>Взрослый:</strong> Более сложные слова, используемые в основном во взрослом возрасте</li>
+              <li><strong>Профессор:</strong> Редко используемые слова</li>
+          </ul>`
+      },
       labels: {
         language: 'Язык',
         level: 'Уровень',
+        dictionary: 'Словарь'
       },
     },
     navStrings: {

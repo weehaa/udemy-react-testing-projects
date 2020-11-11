@@ -9,17 +9,24 @@ import LevelPicker from '../level-picker';
 import SubmitSettings from '../submit-settings';
 
 import './home.scss';
+import DictionaryPicker from '../dictionary-picker';
 
-const Home = ({level, setLevel}) => {
+const Home = ({level, setLevel, dictionary, setDictionary}) => {
   const menuRowComponents = [
     {
       label: 'language',
       menuItem: <LanguagePicker />,
-      hint: 'languageInfo' },
+      hint: 'languageInfo'
+    },
     {
       label: 'level',
       menuItem: <LevelPicker level={level} setLevel={setLevel} />,
       hint: 'levelInfo'
+    },
+    {
+      label: 'dictionary',
+      menuItem: <DictionaryPicker dictionary={dictionary} setDictionary={setDictionary} />,
+      hint: 'dictionaryInfo'
     }
   ];
 
