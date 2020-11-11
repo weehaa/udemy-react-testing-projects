@@ -65,12 +65,24 @@ test('component shows matched letters correctly with given guessWords at hard le
   expect(componentSecretWord.text()).toBe('     ');
 });
 
-test('component shows all letters and runs setSuccess when all letters are guessed', () => {
+test('component shows all letters and runs setSuccess when all letters are guessed at easy level', () => {
   const guessedWords = [
-    { guessedWord: 'ytrap', letterMatchCount: 3 },
+    { guessedWord: 'ytrap', letterMatchCount: 5 },
   ];
   const mockSetSuccess = jest.fn().mockReturnValue('test');
   const wrapper = setup('party', guessedWords, 'easy', mockSetSuccess);
+  const componentSecretWord = findByTestAttr(wrapper, 'component-secret-word');
+  expect(componentSecretWord.text()).toBe('party');
+  expect(mockSetSuccess).toHaveBeenCalledWith(true);
+});
+
+
+test('component shows all letters and runs setSuccess when all letters are guessed at hard level', () => {
+  const guessedWords = [
+    { guessedWord: 'party', letterMatchCount: 5 },
+  ];
+  const mockSetSuccess = jest.fn().mockReturnValue('test');
+  const wrapper = setup('party', guessedWords, 'hard', mockSetSuccess);
   const componentSecretWord = findByTestAttr(wrapper, 'component-secret-word');
   expect(componentSecretWord.text()).toBe('party');
   expect(mockSetSuccess).toHaveBeenCalledWith(true);
