@@ -42,6 +42,10 @@ const languageStrings = {
       home: 'home',
       login: 'login'
     },
+    errors: {
+      network: 'Did not get a response from server. Please, check internet connection',
+    },
+    retryButton: 'Retry',
     invalidLength: 'Your guess word length must be #number# letters!',
   },
 
@@ -55,7 +59,7 @@ const languageStrings = {
     guessInputPlaceholder: 'Введите слово из #number# букв',
     guessedWords: 'Попытки',
     guessColumnHeader: 'Слово',
-    matchingLettersColumnHeader: 'Совпадения',
+    matchingLettersColumnHeader: 'Совпало',
     inPlaceLettersColumnHeader: 'На месте',
     levels: {
       easy: {name: 'Легкий', icon: 'easy.svg'},
@@ -88,6 +92,10 @@ const languageStrings = {
       home: 'Меню',
       login: 'Вход'
     },
+    errors: {
+      network: 'Не получен ответ от сервера. Проверьте интерент соединение'
+    },
+    retryButton: 'Retry',
     invalidLength: 'В слове должно быть #number# букв!',
   },
 };

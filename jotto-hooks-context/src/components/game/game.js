@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './game.css';
 
 import hookActions from '../../actions/hookActions';
 
-import { useLangStrings } from '../../contexts/language-context';
+import languageContext, { useLangStrings } from '../../contexts/language-context';
 import successContext from '../../contexts/success-context';
 import { GuessedWordsProvider } from '../../contexts/guessed-words-context';
 
@@ -12,6 +12,7 @@ import WordInput from '../word-input';
 import Congrats from '../congrats';
 import GuessedWords from '../guessed-words';
 import SecretWord from '../secret-word';
+import ErrorIndicator from '../error-indicator';
 
 /**
  * Reducer to update state depending on action received
@@ -25,31 +26,60 @@ function reducer(state, action) {
   switch (action.type) {
     case 'setSecretWord':
       return { ...state, secretWord: action.payload };
+    case 'setError':
+      return { ...state, error: action.payload };
+    case 'forceRetry':
+      return { ...state, retry: !state.retry, error: false };
     default:
       throw new Error(`invalid action type ${action.type}`);
   }
 }
 
-const Game = ({level}) => {
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    { secretWord: null }
-  );
-  const langStrings = useLangStrings();
+const Game = ({ level }) => {
+    const [language] = useContext(languageContext);
+    const [state, dispatch] = React.useReducer(
+      reducer,
+      { secretWord: null, error: false, retry: false },
+    );
+    const langStrings = useLangStrings();
 
-  const setSecretWord = (secretWord) =>
-    dispatch({ type: 'setSecretWord', payload: secretWord });
+    const setSecretWord = (secretWord) =>
+      dispatch({ type: 'setSecretWord', payload: secretWord });
 
-  React.useEffect(
-    () => {
-      hookActions.getSecretWord(setSecretWord);
-    }, []
-  );
+    React.useEffect(
+      () => {
+        const requestStatus = {
+          isCanceled: false,
+          cancel: () => {},
+        };
+        hookActions.getSecretWord(setSecretWord, language, requestStatus).catch(err => {
+            console.error('error', err);
+            if (!requestStatus.isCanceled) dispatch({ type: 'setError', payload: true });
+          });
+        // clear the request on component unmount
+        return () => {
+          requestStatus.isCanceled = true;
+          requestStatus.cancel('Request canceled');
+        };
+      }, [language, state.retry],
+    );
 
-  if (!state.secretWord) return <Spinner/>;
+    if (state.error) return (
+      <section>
+        <ErrorIndicator message={langStrings.errors.network}/>
+        <button
+          className="btn btn-warning mt-3"
+          onClick={() => dispatch({ type: 'forceRetry' })}
+        >
+          {langStrings.retryButton}
+        </button>
+      </section>
+    );
 
-  return (
-    <section className="container text-center" data-test="component-game">
+    if (!state.secretWord) return <Spinner/>;
+
+    return (
+      <section className="container text-center" data-test="component-game">
         <header className="app-header">
           <h1 className="display-4 text-center mt-4">
             {langStrings.name}
@@ -64,8 +94,9 @@ const Game = ({level}) => {
           </successContext.SuccessProvider>
           <GuessedWords/>
         </GuessedWordsProvider>
-    </section>
-  );
-};
+      </section>
+    );
+  }
+;
 
 export default Game;
