@@ -9,17 +9,32 @@ import NavbarMenu from '../navbar-menu';
 const App = () => {
   const [level, setLevel] = useState('easy');
   const [dictionary, setDictionary] = useState('adult');
+  const [wordLength, setWordLength] = useState('5');
+
   return (
     <main className="container text-center">
       <NavbarMenu/>
       <Switch>
         <Route
           path="/"
-          render={() => <Home level={level} setLevel={setLevel} dictionary={dictionary} setDictionary={setDictionary}/>}
+          render={() =>
+            <Home
+              level={level}
+              setLevel={setLevel}
+              dictionary={dictionary}
+              setDictionary={setDictionary}
+              wordLength={wordLength}
+              setWordLength={setWordLength}/>
+          }
           exact/>
         <Route
           path="/game"
-          render={() => <Game level={level}/>}
+          render={() =>
+            <Game
+              level={level}
+              dictionary={dictionary}
+              wordLength={wordLength}
+            />}
           exact/>
         <Route
           path="/login"

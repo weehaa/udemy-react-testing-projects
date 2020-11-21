@@ -35,7 +35,7 @@ function reducer(state, action) {
   }
 }
 
-const Game = ({ level }) => {
+const Game = ({ level, dictionary, wordLength }) => {
     const [language] = useContext(languageContext);
     const [state, dispatch] = React.useReducer(
       reducer,
@@ -52,7 +52,8 @@ const Game = ({ level }) => {
           isCanceled: false,
           cancel: () => {},
         };
-        hookActions.getSecretWord(setSecretWord, language, requestStatus).catch(err => {
+        hookActions.getSecretWord(setSecretWord, language, dictionary, wordLength, requestStatus)
+          .catch(err => {
             console.error('error', err);
             if (!requestStatus.isCanceled) dispatch({ type: 'setError', payload: true });
           });
@@ -61,7 +62,7 @@ const Game = ({ level }) => {
           requestStatus.isCanceled = true;
           requestStatus.cancel('Request canceled');
         };
-      }, [language, state.retry],
+      }, [language, dictionary, state.retry],
     );
 
     if (state.error) return (

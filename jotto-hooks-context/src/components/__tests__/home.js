@@ -5,13 +5,22 @@ import { findByTestAttr } from '../../test-utils';
 import { LanguageProvider } from '../../contexts/language-context';
 import { MemoryRouter } from 'react-router-dom';
 
-const setup = (level='medium', setLevel=jest.fn(), path='/') => {
+const setup = (
+  level = 'medium',
+  setLevel = jest.fn(),
+  dictionary = 'adult',
+  setDictionary = jest.fn(),
+  path = '/') => {
   return mount(
-    <MemoryRouter initialEntries={[ path ]}>
+    <MemoryRouter initialEntries={[path]}>
       <LanguageProvider>
-        <Home level={level} setLevel={setLevel}/>
+        <Home
+          level={level}
+          setLevel={setLevel}
+          dictionary={dictionary}
+          setDictionary={setDictionary}/>
       </LanguageProvider>
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 };
 
@@ -26,6 +35,6 @@ describe('rendering', () => {
     const wrapper = setup();
     const languagePicker = findByTestAttr(wrapper, 'component-language-picker');
     expect(languagePicker.exists()).toBe(true);
-  })
+  });
 
 });

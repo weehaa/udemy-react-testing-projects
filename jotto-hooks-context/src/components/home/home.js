@@ -6,12 +6,13 @@ import { useLangStrings } from '../../contexts/language-context';
 
 import LanguagePicker from '../language-picker';
 import LevelPicker from '../level-picker';
+import DictionaryPicker from '../dictionary-picker';
+import WordLengthPicker from '../word-length-picker';
 import SubmitSettings from '../submit-settings';
 
 import './home.scss';
-import DictionaryPicker from '../dictionary-picker';
 
-const Home = ({level, setLevel, dictionary, setDictionary}) => {
+const Home = ({level, setLevel, dictionary, setDictionary, wordLength, setWordLength}) => {
   const menuRowComponents = [
     {
       label: 'language',
@@ -27,10 +28,16 @@ const Home = ({level, setLevel, dictionary, setDictionary}) => {
       label: 'dictionary',
       menuItem: <DictionaryPicker dictionary={dictionary} setDictionary={setDictionary} />,
       hint: 'dictionaryInfo'
+    },
+    {
+      label: 'wordLength',
+      menuItem: <WordLengthPicker wordLength={wordLength} setWordLength={setWordLength} />,
+      hint: 'dictionaryInfo'
     }
   ];
 
   const langStrings = useLangStrings();
+
   return (
     <section data-test="component-home" >
       <h2 className="display-4 text-center mt-4">

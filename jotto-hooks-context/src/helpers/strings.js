@@ -21,6 +21,15 @@ const languageStrings = {
       adult: 'Adult',
       professor: 'Professor',
     },
+    wordLengths: {
+      4: '4 letters',
+      5: '5 letters',
+      6: '6 letters',
+      7: '7 letters',
+      8: '8 letters',
+      9: '9 letters',
+      10: '10 letters',
+    },
     loginTitle: 'Login or create a new account with:',
     menuStrings: {
       submitButton: 'PLAY',
@@ -51,7 +60,8 @@ const languageStrings = {
       labels: {
         language: 'Language',
         level: 'Level',
-        dictionary: 'Dictionary'
+        dictionary: 'Dictionary',
+        wordLength: 'Word',
       },
     },
     navStrings: {
@@ -82,6 +92,20 @@ const languageStrings = {
       medium: {name: 'Средний', icon: 'medium.svg'},
       hard: {name: 'Сложный', icon: 'hard.svg'},
     },
+    dictionaries: {
+      kid: 'Ребенок',
+      adult: 'Взрослый',
+      professor: 'Профессор',
+    },
+    wordLengths: {
+      4: '4 буквы',
+      5: '5 букв',
+      6: '6 букв',
+      7: '7 букв',
+      8: '8 букв',
+      9: '9 букв',
+      10: '10 букв',
+    },
     loginTitle: 'Выполните вход или создайте новый аккаунт с помощью:',
     menuStrings: {
       submitButton: 'ИГРАТЬ',
@@ -99,16 +123,11 @@ const languageStrings = {
               <li><strong>Сложный:</strong> Буквы не открываются</li>
           </ul>`
       },
-      dictionaries: {
-        kid: 'Ребенок',
-        adult: 'Взрослый',
-        professor: 'Профессор',
-      },
       dictionaryInfo: {
-        title: 'Описание наборов слов',
+        title: 'Словарь',
         content: `
           <ul class="level-info">
-              <li><strong>Ребенок:</strong> Простые слова, используемые детьми до 10 лет</li>
+              <li><strong>Ребенок:</strong> Простые слова, известные большинству детей до 10 лет</li>
               <li><strong>Взрослый:</strong> Более сложные слова, используемые в основном во взрослом возрасте</li>
               <li><strong>Профессор:</strong> Редко используемые слова</li>
           </ul>`
@@ -116,7 +135,8 @@ const languageStrings = {
       labels: {
         language: 'Язык',
         level: 'Уровень',
-        dictionary: 'Словарь'
+        dictionary: 'Словарь',
+        wordLength: 'Слово'
       },
     },
     navStrings: {

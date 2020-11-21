@@ -16,20 +16,23 @@ const mockGetSecretWord = jest.fn();
 const setup = (secretWord = 'party') => {
   // clear mock to avoid any effect of previous tests
   mockGetSecretWord.mockClear();
-  hookActions.getSecretWord = mockGetSecretWord;
+  hookActions.getSecretWord = mockGetSecretWord
+    .mockReturnValue(new Promise((resolve, reject) => {
+      setTimeout(() => reject(new Error('Whoops!')), 100);
+    }));
 
   React.useReducer = jest.fn()
     .mockReturnValue([
-      { secretWord },
-      jest.fn()
+      { secretWord, error: false, retry: false },
+      jest.fn(),
     ]);
 
   // enzyme does not run useEffect on shallow
   // https://github.com/enzymejs/enzyme/issues/2086
   return mount(
     <LanguageProvider>
-      <Game level='medium' />
-    </LanguageProvider>
+      <Game level='medium' dictionary='adult'/>
+    </LanguageProvider>,
   );
 };
 
@@ -66,10 +69,10 @@ describe('secretWord is not null', () => {
     const appComponent = findByTestAttr(wrapper, 'component-game');
     expect(appComponent.exists()).toBe(true);
   });
-   test('does not render spinner when secretWord is not null', () => {
-     const spinnerComponent = findByTestAttr(wrapper, 'spinner');
-     expect(spinnerComponent.exists()).toBe(false);
-   });
+  test('does not render spinner when secretWord is not null', () => {
+    const spinnerComponent = findByTestAttr(wrapper, 'spinner');
+    expect(spinnerComponent.exists()).toBe(false);
+  });
 });
 
 describe('secretWord not null', () => {
